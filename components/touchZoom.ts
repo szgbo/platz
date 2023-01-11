@@ -60,7 +60,7 @@
   const MAX_ZOOM = 10;
   
   export class TouchZoom {
-    #node: HTMLElement;
+    #node: HTMLElement | null;
     #scrollingAnchor: HTMLElement | Document;
     #gesture: Gesture;
     #resizeObserver: ResizeObserver;
@@ -140,6 +140,9 @@
   
     #updateBounds = () => {
       console.log("update bounds")
+      if (!this.#node) {
+        return;
+      }
       const rect = this.#node.getBoundingClientRect();
       this.#bounds = {
         minX: rect.left,
@@ -287,7 +290,7 @@
   
     #handleDrag: Handler<
       "drag",
-      TouchEvent | PointerEvent | WheelEvent | WebKitGestureEvent
+      TouchEvent | MouseEvent | PointerEvent | KeyboardEvent
     > = ({ delta, elapsedTime }) => {
       console.log("DRAGGIN")
       if (delta[0] === 0 && delta[1] === 0 && elapsedTime < 200) return;
