@@ -22,14 +22,14 @@ export default function TestComponent() {
     console.log("ghello")
     const newTZ = new TouchZoom(frame);
     newTZ.onMove((manual) => {
-    setX(newTZ.center[0])
-    setY(newTZ.center[1])
-    setZoom(newTZ.zoom)
-    if (manual) {
-        if (document.activeElement instanceof HTMLElement) {
-        document.activeElement.blur();
-        }
-    }
+      setX(newTZ.center[0])
+      setY(newTZ.center[1])
+      setZoom(newTZ.zoom)
+      if (manual) {
+          if (document.activeElement instanceof HTMLElement) {
+          document.activeElement.blur();
+          }
+      }
     });
     setTouchZoom(newTZ)
     // const intervalId = window.setInterval(() => {
@@ -47,8 +47,6 @@ export default function TestComponent() {
     )`;
   }
 
-  const zoomStepSize = 0.05
-  const moveStepSize = 50;
   return (
     <main style={{
       position: 'absolute',
@@ -67,7 +65,6 @@ export default function TestComponent() {
         touchAction: "none",
       }} id="frame">
         <div style={{
-            position: "absolute",
           transform: getTransform(positions[1], [x, y], zoom)
         }}>
         <button> 
