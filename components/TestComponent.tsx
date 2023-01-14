@@ -75,6 +75,7 @@ export default function TestComponent() {
           <button> 
             <Image 
               src={sources[1]} 
+              draggable="false"
               alt="123" 
               width={500}
               height={500}/>
@@ -87,6 +88,7 @@ export default function TestComponent() {
           <button> 
             <Image 
               src={sources[0]} 
+              draggable="false"
               alt="456" 
               width={500}
               height={500}/>
