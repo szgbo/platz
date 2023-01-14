@@ -16,7 +16,7 @@ export default function TestComponent() {
   const [touchZoom, setTouchZoom] = useState<TouchZoom | null>(null)
 
   const sources = ["https://media.istockphoto.com/id/185284489/photo/orange.jpg?s=612x612&w=0&k=20&c=m4EXknC74i2aYWCbjxbzZ6EtRaJkdSJNtekh4m1PspE=", "https://thumbs.dreamstime.com/b/red-apple-isolated-clipping-path-19130134.jpg"]
-  const positions = [[300, 300], [0, 0]]
+  const positions = [[500, 50], [0, 0]]
 
   // let frame: HTMLDivElement;
 
@@ -49,7 +49,6 @@ export default function TestComponent() {
       ${pos[1] - center[1]}px
     )`;
   }
-
   return (
     <main style={{
       position: 'absolute',
@@ -65,13 +64,33 @@ export default function TestComponent() {
         height: "100vh",
         zIndex: 10,
         touchAction: "none",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }} id="frame">
         <div style={{
+          position: "absolute",
           transform: getTransform(positions[1], [x, y], zoom),
         }}>
-        <button> 
-          <Image src={sources[1]} alt="123"/>
-        </button>
+          <button> 
+            <Image 
+              src={sources[1]} 
+              alt="123" 
+              width={500}
+              height={500}/>
+          </button>
+        </div>
+        <div style={{
+          position: "absolute",
+          transform: getTransform(positions[0], [x, y], zoom),
+        }}>
+          <button> 
+            <Image 
+              src={sources[0]} 
+              alt="456" 
+              width={500}
+              height={500}/>
+          </button>
         </div>
       </div>
     </main>
