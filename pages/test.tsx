@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import { useState, useEffect, useRef } from 'react'
 
 import TestComponent from '../components/TestComponent'
-import bg from './bg1.png';
+import bg from './bg2.png';
 
 // import Head from 'next/head'
 // import Image from 'next/image'
@@ -10,9 +10,9 @@ import bg from './bg1.png';
 
 const Test: NextPage = () => {
   return (
-    <div style={{ backgroundImage:`url(${bg})` }}> 
+    <main> 
       <TestComponent />
-    </div>
+    </main>
   )
 }
 

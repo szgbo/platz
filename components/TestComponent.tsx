@@ -5,7 +5,8 @@ import { useState, useEffect, useRef } from 'react'
 // import styles from '../styles/Home.module.css'
 
 import { TouchZoom } from "./touchZoom";
-import bg from './bg2.png';
+import Image from 'next/image'
+
 
 
 export default function TestComponent() {
@@ -56,8 +57,7 @@ export default function TestComponent() {
       right: 0,
       bottom: 0,
       left: 0,
-      overflow: 'hidden',
-      backgroundImage:`url(${bg})`
+      overflow: 'hidden', 
     }}>
       <div style={{
         position: "absolute",
@@ -65,14 +65,12 @@ export default function TestComponent() {
         height: "100vh",
         zIndex: 10,
         touchAction: "none",
-        backgroundImage:`url(${bg})`
       }} id="frame">
         <div style={{
           transform: getTransform(positions[1], [x, y], zoom),
-          backgroundImage:`url(${bg})`
         }}>
         <button> 
-          <img src={sources[1]} />
+          <Image src={sources[1]} alt="123"/>
         </button>
         </div>
       </div>
