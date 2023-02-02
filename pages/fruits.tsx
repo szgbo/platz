@@ -5,7 +5,7 @@ import Fruits from '../components/fruits'
 
 // import Dock from '../components/dock';
 
-export default function Home() {
+export default function FruitsPage() {
   // infinite canvas is a higher order component that takes a component as an argument
   const InfiniteContent = InfiniteCanvas(Fruits)
   // position and zoom values are arbitrary and serve as placeholders
