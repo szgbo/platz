@@ -10,11 +10,20 @@ import { initCursorChat } from 'cursor-chat'
 const TestCursor: NextPage = () => {
 
   useEffect(() => {
-    const cleanUp = initCursorChat('platz_cursor_chat_room')
-    return cleanUp;
+    try {
+      initCursorChat('platz_cursor_chat_room')
+    } catch (error) {
+      console.log(error)
+      console.log('')
+    }
   }, []);
 
   const router = useRouter();
+  // // change dot on page reload
+  // useEffect(() => {
+  //   const cleanUp = initCursorChat('platz_cursor_chat_room')
+  //   return cleanUp;
+  // }, [router.pathname])
 
   return (
     <div id="cursor-chat-layer">
