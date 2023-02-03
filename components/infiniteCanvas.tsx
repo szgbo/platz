@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { getTransform } from '../utils/infiniteHelper'
 
 import { TouchZoom } from "./touchZoom";
-
+import NavBar from './navBar';
 interface Props {
   zoom: number,
   x: number,
@@ -15,9 +16,6 @@ const InfiniteCanvas = <P extends Props>(WrappedComponent: React.ComponentType<P
     const [zoom, setZoom] = useState(1.0)
     const [x, setX] = useState(0)
     const [y, setY] = useState(0)
-
-    const sources = ["https://media.istockphoto.com/id/185284489/photo/orange.jpg?s=612x612&w=0&k=20&c=m4EXknC74i2aYWCbjxbzZ6EtRaJkdSJNtekh4m1PspE=", "https://thumbs.dreamstime.com/b/red-apple-isolated-clipping-path-19130134.jpg"]
-    const positions = [[500, 50], [0, 0]]
 
     const ID = "frame"
 
@@ -35,11 +33,15 @@ const InfiniteCanvas = <P extends Props>(WrappedComponent: React.ComponentType<P
         }
       });
     }, [])
-
     
     return (
       <div className='infinite-container'>
         <div className='infinite-canvas' id={ID}>
+          <div className='inf-click-div' style={{ 
+            transform: getTransform([0, -300], [x, y], zoom) 
+          }}>
+            <NavBar />
+          </div>
           <WrappedComponent {...props} zoom={zoom} x={x} y={y} />
         </div>
       </div>

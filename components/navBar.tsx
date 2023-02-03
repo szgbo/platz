@@ -9,13 +9,13 @@ interface Item {
 }
 
 const initItems = [{
-  text: 'Home',
+  text: 'HOME',
   active: true,
 }, {
-  text: 'Features',
+  text: 'FEATURES',
   active: false,
 }, {
-  text: 'Tutorial',
+  text: 'TUTORIAL',
   active: false,
 }] 
 

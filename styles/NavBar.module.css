@@ -51,6 +51,7 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   position: relative;
+  /* set absolute width to determine  */
   width: 25rem;
 }
 
@@ -98,19 +99,6 @@
 
 .nav-item.active.item-2 + .nav-item-highlighter {
   left: 87.5%;
-}
-
-.nav-item .fas,
-.nav-item .far {
-  transform: translateX(15px);
-  margin-right: 10px;
-  transition: transform 0.25s;
-}
-
-.nav-item.active .fas,
-.nav-item.active .far {
-  margin-right: 10px;
-  transform: translateX(0px);
 }
 
 .nav-item .nav-item-text {
