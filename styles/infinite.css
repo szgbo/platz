@@ -25,3 +25,7 @@
     pointer-events: none;
     user-select: none;
 }
+
+.inf-click-div {
+    position: absolute;
+}

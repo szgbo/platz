@@ -2,6 +2,8 @@ import '../styles/globals.css'
 import '../styles/dock.css'
 import '../styles/infinite.css'
 import '../styles/cursor-chat.css'
+import '../styles/NavBar.css'
+
 import type { AppPropsWithLayout } from '../types/layoutTypes'
 import Layout from '../components/layout';
 
