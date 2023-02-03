@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react';
+import Link from 'next/link';
+
 import styles from '../styles/NavBar.module.css'
 import cx from 'classnames';
-
 
 interface Item {
   text: string,
@@ -9,13 +10,13 @@ interface Item {
 }
 
 const initItems = [{
-  text: 'HOME',
+  text: 'home',
   active: true,
 }, {
-  text: 'FEATURES',
+  text: 'features',
   active: false,
 }, {
-  text: 'TUTORIAL',
+  text: 'tutorial',
   active: false,
 }] 
 
@@ -47,18 +48,20 @@ const NavBar = () => {
     <div className={styles["nav-container"]}>
     {
       items.map((item, i) => (
-        <div
-          // className={ styles[`nav-item item-${i} ${item.active ? 'active' : ''}`] }
-          className={ cx(
-            styles['nav-item'],
-            styles[`item-${i}`],
-            styles[item.active ? 'active' : ''],
-          ) }
-          key={ item.text }
-          onClick={ () => changeActiveItem(i) }
-        >
-          { renderItem(item) }
-        </div>
+        // <Link href={item.text}>
+          <div
+            // className={ styles[`nav-item item-${i} ${item.active ? 'active' : ''}`] }
+            className={ cx(
+              styles['nav-item'],
+              styles[`item-${i}`],
+              styles[item.active ? 'active' : ''],
+            ) }
+            key={ item.text }
+            onClick={ () => changeActiveItem(i) }
+          >
+            { renderItem(item) }
+          </div>
+        // </Link>
       ))
     }
     <div className={styles["nav-item-highlighter"]} />

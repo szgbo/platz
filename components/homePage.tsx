@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import Image from 'next/image'
 import { getTransform } from '../utils/infiniteHelper'
 
+import NavBar from './navBar';
+
 interface Props {
   zoom: number,
   x: number,
@@ -22,38 +24,12 @@ const Cars = ({x, y, zoom}: Props) => {
       <div className='inf-div' style={{ 
         transform: getTransform(positions[0], [x, y], zoom) 
       }}>
-        <button> 
-          <Image 
-            src={sources[0]} 
-            draggable="false"
-            alt="123" 
-            width={200}
-            height={200}/>
-        </button>
+        Platz
       </div>
       <div className='inf-div' style={{ 
         transform: getTransform(positions[1], [x, y], zoom) 
       }}>
-        <button> 
-          <Image 
-            src={sources[1]} 
-            draggable="false"
-            alt="123" 
-            width={200}
-            height={200}/>
-        </button>
-      </div>
-      <div className='inf-div' style={{ 
-        transform: getTransform(positions[2], [x, y], zoom) 
-      }}>
-        <button> 
-          <Image 
-            src={sources[2]} 
-            draggable="false"
-            alt="123" 
-            width={200}
-            height={200}/>
-        </button>
+        an open source personal website template for creatives
       </div>
     </>
   )

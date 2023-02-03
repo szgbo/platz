@@ -65,8 +65,9 @@
   z-index: 2;
 }
 
+
 .nav-item-highlighter {
-  width: 100px;
+  width: 125px;
   height: 55%;
   background: rgba(255, 255, 255, 0.25);
   border-radius: 10px;
@@ -94,16 +95,17 @@
 }
 
 .nav-item.active.item-1 ~ .nav-item-highlighter {
-  left: 50%;
+  left: 46.2%;
 }
 
 .nav-item.active.item-2 + .nav-item-highlighter {
-  left: 87.5%;
+  left: 84%;
 }
 
 .nav-item .nav-item-text {
   opacity: 1;
   /* visibility: hidden; */
+  text-transform: uppercase;
   transition: opacity 0.25s;
 }
 
