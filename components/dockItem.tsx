@@ -5,8 +5,9 @@ import type { RefObject } from "react";
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useRaf } from 'rooks';
-
 import { motion, useMotionValue, useSpring, useAnimation, MotionValue, useTransform } from "framer-motion";
+
+import styles from "../styles/Dock.module.css";
 
 const useDockHoverAnimation = (
   mouseX: MotionValue | null,  
@@ -134,12 +135,12 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
       href={link} 
       onClick={bounceEffect} 
       aria-label={iconTitle} 
-      className="dock-item-container"
+      className={styles["dock-item-container"]}
     >
     {/* <!-- label tag for text ontop --> */}
     <motion.p
       animate={controls}
-      className="dock-item-tooltip"
+      className={styles["dock-item-tooltip"]}
     >
       {iconTitle}
     </motion.p>
@@ -157,7 +158,7 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
           animate={controls} 
           id="dockItem-icon"
           ref={imgRef}
-          className="dock-item-img"
+          className={styles["dock-item-img"]}
           src={iconSrc}
           alt={iconTitle}
           style={{ 
@@ -171,7 +172,7 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
     {/* <!-- dot opacity depends on if app is open or not, open apps in global state -->
     <!-- sets the opacity state according to if app is open --> 
     <!-- + sign converts the variable to an integer (javascript unary plus) --> */}
-    <div className="dot" style={{
+    <div className={styles["dot"]} style={{
       opacity: dotOpacity,
     }} />
   </Link>
