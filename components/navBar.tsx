@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import styles from '../styles/NavBar.module.css'
 import cx from 'classnames';
 
@@ -12,10 +12,10 @@ const initItems = [{
   text: 'Home',
   active: true,
 }, {
-  text: 'Inbox',
+  text: 'Features',
   active: false,
 }, {
-  text: 'Profile',
+  text: 'Tutorial',
   active: false,
 }] 
 
@@ -35,11 +35,11 @@ const NavBar = () => {
 
   function renderItem({ text }: Item) {
     return (
-      <React.Fragment key={ text }>
+      <Fragment key={ text }>
         <span className={styles["nav-item-text"]}>
           { text }
         </span>
-      </React.Fragment>
+      </Fragment>
     );
   }
 

@@ -5,8 +5,8 @@
     bottom: 0;
     left: 0;
     overflow: hidden; 
-    /* background-color: #F5F5F5; */
-    background-image: url(./bg1.png);
+    background-color: #f8f8f8;
+    /* background-image: url(./bg1.png); */
 }
 
 .infinite-canvas {

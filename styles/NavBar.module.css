@@ -41,24 +41,26 @@
   transform: translate3d(25%, 0, 0);
 }
 
+/* divider between */
+
 .nav-container {
-  background: #432fbf;
+  /* background: rgba(193, 20, 20, 0.75); */
+  background: transparent;
   display: flex;
   justify-content: space-between;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
-  padding: 20px;
   position: relative;
-  width: 500px;
+  width: 25rem;
 }
 
 .nav-item {
-  color: #999;
-  padding: 10px 15px;
+  color: rgb(169, 169, 169);
+  padding: 30px 25px;
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   z-index: 2;
 }
 
@@ -66,10 +68,11 @@
   width: 100px;
   height: 55%;
   background: rgba(255, 255, 255, 0.25);
-  border-radius: 5px;
+  border-radius: 10px;
   position: absolute;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
+  box-shadow: 0px 5px 10px rgba(50, 50, 50, 0.5);
   z-index: 1;
   visibility: hidden;
   transition: left .25s;
@@ -78,7 +81,7 @@
 /* division into a new thing here */
 
 .nav-item.active {
-  color: #fff;
+  color: #000;
 }
 
 .nav-item.active ~ .nav-item-highlighter {
@@ -111,8 +114,8 @@
 }
 
 .nav-item .nav-item-text {
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  /* visibility: hidden; */
   transition: opacity 0.25s;
 }
 
