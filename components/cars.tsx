@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, {useState} from 'react';
 import Image from 'next/image'
 import { getTransform } from '../utils/infiniteHelper'
 
@@ -14,7 +13,7 @@ const sources = [
   "https://hips.hearstapps.com/autoweek/assets/s3fs-public/60523009.jpg",
   "https://static.wikia.nocookie.net/pixar/images/7/71/Cars_chick_hicks.jpg/revision/latest/smart/width/250/height/250?cb=20080712053156",
 ]
-  const positions = [[0, 100], [225, 150], [-300, 300]]
+const positions = [[0, 100], [225, 150], [-300, 300], [0, -300]]
 
 const Cars = ({x, y, zoom}: Props) => {
   return (

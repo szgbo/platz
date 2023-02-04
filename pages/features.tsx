@@ -1,13 +1,13 @@
 import React from 'react';
 
 import InfiniteCanvas from '../components/infiniteCanvas'
-import Cars from '../components/cars'
+import Fruits from '../components/fruits'
 
 // import Dock from '../components/dock';
 
-export default function CarsPage() {
+export default function Features() {
   // infinite canvas is a higher order component that takes a component as an argument
-  const InfiniteContent = InfiniteCanvas(Cars)
+  const InfiniteContent = InfiniteCanvas(Fruits)
   // position and zoom values are arbitrary and serve as placeholders
   return (
     <div>
