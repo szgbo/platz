@@ -8,22 +8,34 @@ interface Props {
   y: number,
 }
 
-
-const positions = [[0, 100], [225, 150], [-300, 300], [0, -300]]
+const positions = {
+  center: [0, 0],
+  title: [-200, 0],
+  subtitle: [-7, 50],
+}
 
 const HomePage = ({x, y, zoom}: Props) => {
 
   return (
     <>
-      <div className='inf-div' style={{ 
-        transform: getTransform(positions[0], [x, y], zoom) 
+      {/* <div className='inf-div' style={{ 
+        transform: getTransform(positions.center, [x, y], zoom) 
       }}>
-        Platz
+        center
+      </div> */}
+      <div className='inf-div' style={{ 
+        transform: getTransform(positions.title, [x, y], zoom) 
+      }}>
+        <div className='title'>
+          Platz
+        </div>
       </div>
       <div className='inf-div' style={{ 
-        transform: getTransform(positions[1], [x, y], zoom) 
+        transform: getTransform(positions.subtitle, [x, y], zoom) 
       }}>
-        an open source personal website template for creatives
+        <div className='subtitle'>
+          an open source personal website template for creatives
+        </div>
       </div>
     </>
   )

@@ -33,12 +33,14 @@ const InfiniteCanvas = <P extends Props>(WrappedComponent: React.ComponentType<P
         }
       });
     }, [])
+
+    const navBarPosition = [0, -400]
     
     return (
       <div className='infinite-container'>
         <div className='infinite-canvas' id={ID}>
           <div className='inf-click-div' style={{ 
-            transform: getTransform([0, -300], [x, y], zoom) 
+            transform: getTransform(navBarPosition, [x, y], zoom) 
           }}>
             <NavBar />
           </div>
