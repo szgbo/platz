@@ -110,10 +110,6 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
 
   const controls = useAnimation();
   async function bounceEffect() {
-    let overlay = document.querySelector(".overlay") as HTMLElement;
-    if (overlay) {
-      overlay.style.display = "none";
-    }
     await controls.start({
         transform: 'translate(0, -15px)',
         transition: { duration: 0.4, ease: [0.5, 0.5, 0.5, 1] },

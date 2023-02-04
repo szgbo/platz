@@ -52,7 +52,7 @@
   border-bottom-right-radius: 10px;
   position: relative;
   /* set absolute width to determine  */
-  width: 25rem;
+  width: 40rem;
 }
 
 .nav-item {
@@ -73,7 +73,7 @@
   border-radius: 10px;
   position: absolute;
   top: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateY(-50%);
   box-shadow: 0px 5px 10px rgba(50, 50, 50, 0.5);
   z-index: 1;
   visibility: hidden;
@@ -90,7 +90,7 @@
   visibility: visible;
 }
 
-.nav-item.active.item-0 ~ .nav-item-highlighter {
+/* .nav-item.active.item-0 ~ .nav-item-highlighter {
   left: 12.5%;
 }
 
@@ -100,7 +100,7 @@
 
 .nav-item.active.item-2 + .nav-item-highlighter {
   left: 84%;
-}
+} */
 
 .nav-item .nav-item-text {
   opacity: 1;

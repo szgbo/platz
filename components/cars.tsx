@@ -16,7 +16,6 @@ const sources = [
 const positions = [[0, 100], [225, 150], [-300, 300], [0, -300]]
 
 const Cars = ({x, y, zoom}: Props) => {
-
   return (
     <>
       <div className='inf-div' style={{ 

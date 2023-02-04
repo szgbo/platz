@@ -18,6 +18,9 @@ const initItems = [{
 }, {
   text: 'tutorial',
   active: false,
+}, {
+  text: 'about',
+  active: false,
 }] 
 
 const NavBar = () => {
@@ -25,6 +28,19 @@ const NavBar = () => {
 
 
   function changeActiveItem( i: number ) {
+    const highlight = document.querySelector("#nav-item-highlighter") as HTMLElement;
+    const item = document.querySelector(`#item-${i}`) as HTMLElement;
+    const container = document.querySelector("#nav-container") as HTMLElement;
+    if (highlight && item && container) {
+      // use item offset and highlight offset and container offset to calculate the position of the highlighter
+      const highlightOffset = highlight.offsetWidth / 2;
+      const itemOffset = item.offsetLeft + item.offsetWidth / 2;
+      const containerOffset = container.offsetLeft;
+      const position = itemOffset + containerOffset - highlightOffset;
+      // use left % to position the highlighter
+      highlight.style.left = `${position}px`;
+    }
+  
     const newItems = items.map((item, index) => {
       return {
         ...item,
@@ -44,8 +60,9 @@ const NavBar = () => {
     );
   }
 
+
   return (
-    <div className={styles["nav-container"]}>
+    <div className={styles["nav-container"]} id={"nav-container"}>
     {
       items.map((item, i) => (
         // <Link href={item.text}>
@@ -56,6 +73,7 @@ const NavBar = () => {
               styles[`item-${i}`],
               styles[item.active ? 'active' : ''],
             ) }
+            id={ `item-${i}` }
             key={ item.text }
             onClick={ () => changeActiveItem(i) }
           >
@@ -64,7 +82,7 @@ const NavBar = () => {
         // </Link>
       ))
     }
-    <div className={styles["nav-item-highlighter"]} />
+    <div className={styles["nav-item-highlighter"]} id={"nav-item-highlighter"}/>
   </div>
     // <>
     //   <form>
