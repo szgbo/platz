@@ -2,8 +2,8 @@
   padding-bottom: 0.7rem;
   left: 0;
   bottom: 10px;
-  width: 100%;
-  height: 5rem;
+  width: 5rem;
+  height: 100%;
   padding: 0.4rem;
   display: flex;
   justify-content: center;
@@ -13,6 +13,7 @@
   position: fixed;
   margin: auto;
 }
+/* FIXME: change later for vertical */
 @media (min-width: 768px) {
   .dock {
     width: max-content;
@@ -30,17 +31,18 @@
   position: relative;
   padding: 0.3rem;
   border-radius: 1.2rem;
-  height: 100%;
+  width: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   transition: transform 0.3s ease;
   backdrop-filter: blur(21.4378px);
 
 
   margin: auto;
-  width: max-content;
+  height: max-content;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .dock-el ::before:not(.overlay) {
@@ -70,7 +72,7 @@
 /* css for the icon buttons */
 .dock-item-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   justify-content: flex-end;
   position: relative;
   border-radius: 0.5rem;
@@ -93,7 +95,9 @@
 /* style for the hover over titles */
 .dock-item-tooltip {
   --double-border: 0 0 0 0 white;
-  top: -45%;
+  /* FIXME: changed left and top */
+  left: 105%;
+  top: 35%;
   z-index: 70;
   white-space: nowrap;
   position: absolute;
@@ -104,11 +108,11 @@
   box-shadow: hsla(0deg, 0%, 0%, 30%) 0px 1px 5px 2px, var(--double-border);
   color: hsl(240, 3%, 11%);
   font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-  font-weight: 400;
+  font-weight: 10;
   font-size: 0.9rem;
   letter-spacing: 0.4px;
   display: none;
-  text-align: center;
+  text-align: left;
   width: fit-content;
 }
 

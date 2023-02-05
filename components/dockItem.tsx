@@ -1,5 +1,7 @@
 // adapted from https://github.com/PuruVJ/macos-web/tree/main/src/components/Dock
 
+//TODO: make styles more modular for vertical and horizontal dock
+
 import React, { useEffect, useRef, useState } from "react";
 import type { RefObject } from "react";
 import { useRouter } from 'next/router';
@@ -59,7 +61,7 @@ const useDockHoverAnimation = (
     const mouseXVal = mouseX?.get();
     if (el && mouseXVal !== null) {
       const rect = el.getBoundingClientRect();
-      const imgCenterX = rect.left + rect.width / 2;
+      const imgCenterX = rect.top + rect.height / 2;
       // difference between the x coordinate value of the mouse pointer
       // and the img center x coordinate value
       const distanceDelta = mouseXVal - imgCenterX;
@@ -78,8 +80,9 @@ interface Props {
   mouseX: MotionValue | null;
   iconSrc: string;
   pageName: string;
+  direction: "left" | "right" | "top" | "bottom";
 }
-export function DockItem({mouseX, iconSrc, pageName}: Props) {
+export function DockItem({mouseX, iconSrc, pageName, direction}: Props) {
   const router = useRouter();
   // change dot on page reload
   useEffect(() => {
@@ -110,17 +113,28 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
 
   const controls = useAnimation();
   async function bounceEffect() {
+    var coords = ["", "", ""];
+    if (direction === "right") {
+      coords = ["-15px, 0", "0.1px, 0", "0, 0"];
+    } else if (direction === "left") {
+        coords = ["15px, 0", "-0.1px, 0", "0, 0"];
+    } else if (direction === "bottom") {
+        coords = ["0, -15px", "0, 0.1px", "0, 0"];
+    } else if (direction === "top") {
+        coords = ["0, 15px", "0, -0.1px", "0, 0"];
+    }
+
     await controls.start({
-        transform: 'translate(0, -15px)',
+        transform: `translate(${coords[0]})`,
         transition: { duration: 0.4, ease: [0.5, 0.5, 0.5, 1] },
     });
     await controls.start({
-        transform: 'translate(0, 0.1px)',
+        transform: `translate(${coords[1]})`,
         transition: { duration: 0.4, ease: [0.5, 0.5, 0.5, 1] },
     });
     // for some reason translating to (0,0) doesn't play an animation
     await controls.start({
-      transform: 'translate(0, 0)',
+      transform: `translate(${coords[2]})`,
       transition: { duration: 0.1, ease: [0.5, 0.5, 0.5, 1] },
   });
   }
@@ -144,8 +158,9 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
       animate={controls} 
       style={{ 
         // width: `${widthPX.get() / 16}rem`,
-        width,
-        willChange: "width",
+        height: width,
+        willChange: "height",
+        margin: "0.2rem 0",
       }}
       // ref={imgRef}
     >
@@ -159,8 +174,8 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
           alt={iconTitle}
           style={{ 
             // width: `${widthPX.get() / 16}rem`,
-            width,
-            willChange: "width",
+            height: width,
+            willChange: "height",
           }}
           draggable="false"
         />
