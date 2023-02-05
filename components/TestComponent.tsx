@@ -62,7 +62,6 @@ export default function TestComponent() {
         position: "absolute",
         width: "100vw",
         height: "100vh",
-        zIndex: 10,
         touchAction: "none",
         display: "flex",
         justifyContent: "center",
