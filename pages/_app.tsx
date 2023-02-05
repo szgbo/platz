@@ -1,6 +1,19 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import '../styles/infinite.css'
+import '../styles/cursor-chat.css'
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import type { AppPropsWithLayout } from '../types/layoutTypes'
+import Layout from '../components/layout';
+
+
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout ?? ((page) => <Layout> {page} </Layout>)
+
+  return (
+    <>
+      {getLayout(<Component {...pageProps} />)}
+    </>
+  )
 }

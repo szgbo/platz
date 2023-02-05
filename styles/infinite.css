@@ -1,0 +1,31 @@
+.infinite-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden; 
+    background-color: #f8f8f8;
+    /* background-image: url(./bg1.png); */
+}
+
+.infinite-canvas {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    touch-action: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inf-div {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+}
+
+.inf-click-div {
+    position: absolute;
+}

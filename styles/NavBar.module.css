@@ -1,0 +1,115 @@
+.label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: #394a56;
+}
+
+.label-text {
+  margin-left: 16px;
+}
+
+.toggle {
+  isolation: isolate;
+  position: relative;
+  height: 30px;
+  width: 60px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: -8px -4px 8px 0px #ffffff,
+    8px 4px 12px 0px #d1d9e6,
+    4px 4px 4px 0px #d1d9e6 inset,
+    -4px -4px 4px 0px #ffffff inset;
+}
+
+.toggle-state {
+  display: none;
+}
+
+.indicator {
+  height: 100%;
+  width: 200%;
+  background: #ecf0f3;
+  border-radius: 15px;
+  transform: translate3d(-75%, 0, 0);
+  transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+  box-shadow: -8px -4px 8px 0px #ffffff,
+    8px 4px 12px 0px #d1d9e6;
+}
+
+.toggle-state:checked ~ .indicator {
+  transform: translate3d(25%, 0, 0);
+}
+
+/* divider between */
+
+.nav-container {
+  /* background: rgba(193, 20, 20, 0.75); */
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: relative;
+  /* set absolute width to determine  */
+  width: 40rem;
+}
+
+.nav-item {
+  color: rgb(169, 169, 169);
+  padding: 30px 25px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  z-index: 2;
+}
+
+
+.nav-item-highlighter {
+  width: 125px;
+  height: 55%;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0px 5px 10px rgba(50, 50, 50, 0.5);
+  z-index: 1;
+  visibility: hidden;
+  transition: left .25s;
+}
+
+/* division into a new thing here */
+
+.nav-item.active {
+  color: #000;
+}
+
+.nav-item.active ~ .nav-item-highlighter {
+  visibility: visible;
+}
+
+/* .nav-item.active.item-0 ~ .nav-item-highlighter {
+  left: 12.5%;
+}
+
+.nav-item.active.item-1 ~ .nav-item-highlighter {
+  left: 46.2%;
+}
+
+.nav-item.active.item-2 + .nav-item-highlighter {
+  left: 84%;
+} */
+
+.nav-item .nav-item-text {
+  opacity: 1;
+  /* visibility: hidden; */
+  text-transform: uppercase;
+  transition: opacity 0.25s;
+}
+
+.nav-item.active .nav-item-text {
+  visibility: visible;
+  opacity: 1;
+}
