@@ -40,7 +40,7 @@ export default function Home({ allPosts }: any) {
   const InfiniteContent = InfiniteCanvas(HomePage)
   // position and zoom values are arbitrary and serve as placeholders
   return (
-    <div className='relative'>
+    <div>
       <CommandMenu posts={allPosts} />
       <InfiniteContent x={0} y={0} zoom={1}/>
     </div>
