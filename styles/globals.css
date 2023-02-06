@@ -2,9 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-main{
-  background-image: url(./bg1.png);
+.title {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #555555;
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #555555;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
 
 /* :root {
   --max-width: 1100px;
@@ -113,3 +127,4 @@ a {
     color-scheme: dark;
   }
 } */
+

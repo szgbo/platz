@@ -128,7 +128,7 @@
           },
         }
       );
-      console.log(util.inspect(this.#node, false, 1, true /* enable colors */))
+      // console.log(util.inspect(this.#node, false, 1, true /* enable colors */))
     }
   
     #getPoint(e: PointerEvent | Touch | WheelEvent): number[] {

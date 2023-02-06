@@ -1,19 +1,21 @@
 import type { NextPage } from 'next'
+import {useRouter} from 'next/router';
 import { useState, useEffect, useRef } from 'react'
-
-import TestComponent from '../components/TestComponent'
-import bg from './bg2.png';
+import { initCursorChat } from 'cursor-chat'
 
 // import Head from 'next/head'
 // import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
 
-const Test: NextPage = () => {
+const Blog: NextPage = () => {
+
+  const router = useRouter();
+
   return (
-    <main> 
-      <TestComponent />
-    </main>
+    <div>
+        <div>{router.pathname}</div>
+    </div>
   )
 }
 
-export default Test
+export default Blog
