@@ -1,11 +1,28 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
+import { Command } from 'cmdk'
+import getPosts from './api/getPosts'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+function CommandMenu({ posts: allPosts }: { posts: any }) {
+  // return a command menu with all posts in pages/posts
+  return (
+    <Command label="Command Menu">
+      <Command.Input />
+      <Command.List>
+        <Command.Empty>No results found.</Command.Empty>
+        {/* create an item for every post */}
+        {allPosts.map((post: any) => (
+          <Command.Item><a href={`/posts/${post.link}`}>{post.title}</a></Command.Item>
+        ))}
+      </Command.List>
+    </Command>
+  )
+}
+
+export default function Home({ allPosts }: any) {
+  console.log(allPosts)
   return (
     <>
       <Head>
@@ -14,7 +31,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <CommandMenu posts={allPosts} />
+      {/* <main className={styles.main}>
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
@@ -117,7 +135,24 @@ export default function Home() {
             </p>
           </a>
         </div>
-      </main>
+      </main> */}
     </>
   )
+}
+
+// fetch all posts from pages/posts
+export async function getStaticProps() {
+  // use getPosts api to get all posts
+  const posts = getPosts()
+  // map all posts to get their titles and names
+  const allPosts = posts.map((post: any) => {
+    const component = require(`./posts/${post}`)
+    return {
+      link: post.replace('.tsx', ''),
+      title: component.title,
+    }
+  })
+  return {
+    props: { allPosts },
+  }
 }
