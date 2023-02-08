@@ -18,7 +18,7 @@ const useDockHoverAnimation = (
   const baseWidth = 60;
   // limit is distance needed to enter for animations to start
   const distanceLimit = baseWidth * 5;
-  // 
+  
   const beyondTheDistanceLimit = distanceLimit + 1;
   // used to measure the distance between the mouse pointer and the center of the dock item
   // matched with widthoutput to control how much to scale the icon depending on the mouse
@@ -107,6 +107,9 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
   const { width } = useDockHoverAnimation(mouseX, imgRef);
 
   const iconTitle = pageName;
+
+  `dsfh ${width} asdflk`
+  'dsfh' + width + 'asdflk'
 
   const controls = useAnimation();
   async function bounceEffect() {

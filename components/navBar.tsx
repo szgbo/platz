@@ -1,8 +1,9 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import styles from '../styles/NavBar.module.css'
 import cx from 'classnames';
+import { useRouter } from 'next/router';
 
 interface Item {
   text: string,
@@ -11,7 +12,7 @@ interface Item {
 
 const initItems = [{
   text: 'home',
-  active: true,
+  active: false,
 }, {
   text: 'features',
   active: false,
@@ -21,11 +22,20 @@ const initItems = [{
 }, {
   text: 'about',
   active: false,
-}] 
+}]
+
+export const navBarPosition = [0,-300];
 
 const NavBar = () => {
   const [items, setItems] = useState<Item[]>(initItems);
+  const router = useRouter();
 
+  useEffect(() => {
+    const { pathname } = router;
+    const path = pathname.split('/')[1];
+    const index = initItems.findIndex(item => (item.text === path || (item.text === 'home' && path === '')));
+    changeActiveItem(index);
+  }, []);
 
   function changeActiveItem( i: number ) {
     const highlight = document.querySelector("#nav-item-highlighter") as HTMLElement;
@@ -66,8 +76,9 @@ const NavBar = () => {
     {
       items.map((item, i) => (
         // <Link href={item.text}>
-          <div
+          <Link
             // className={ styles[`nav-item item-${i} ${item.active ? 'active' : ''}`] }
+            href={item.text === "home" ? "/" : "/" + item.text}
             className={ cx(
               styles['nav-item'],
               styles[`item-${i}`],
@@ -78,34 +89,12 @@ const NavBar = () => {
             onClick={ () => changeActiveItem(i) }
           >
             { renderItem(item) }
-          </div>
+          </Link>
         // </Link>
       ))
     }
     <div className={styles["nav-item-highlighter"]} id={"nav-item-highlighter"}/>
   </div>
-    // <>
-    //   <form>
-    //     <label className={styles.error}>
-    //       <div className={styles.toggle}>
-    //         <input className={styles["toggle-state"]} type="checkbox" name="check" value="check"/>
-    //         <div className={styles.indicator}></div>
-    //       </div>
-    //     </label>
-    //   </form>
-    //   <ul>
-    //       <li>
-    //         <button>
-    //           hello
-    //         </button>
-    //       </li>
-    //       <li>
-    //         <button>
-    //           hello
-    //         </button>
-    //       </li>
-    //   </ul>
-    // </>
   )
 }
 

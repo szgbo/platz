@@ -28,4 +28,5 @@
 
 .inf-click-div {
     position: absolute;
+    user-select: none;
 }

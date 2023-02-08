@@ -77,7 +77,6 @@
   align-items: center;
 }
 
-/* the hover doesnt work */
 .dock-item-container:hover > .dock-item-tooltip {
     display: block;
 }
