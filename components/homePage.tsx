@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import Image from 'next/image'
 import { getTransform } from '../utils/infiniteHelper'
 
+// TODO: refactor the styles, refactor macdock? easier for icons and routes? for nav as well
+
 interface Props {
   zoom: number,
   x: number,
