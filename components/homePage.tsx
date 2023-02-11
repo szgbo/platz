@@ -3,6 +3,15 @@ import Image from 'next/image'
 import { getTransform } from '../utils/infiniteHelper'
 
 // TODO: refactor the styles, refactor macdock? easier for icons and routes? for nav as well
+// TODO: make better modular styles, center div, flex rows? 
+// TODO: base fonts, base colors, base styles, base components, center
+// TODO: add bgcolor to inf canvas, add center, h1, h2, h3 .. h6, image, vid, link, base components
+// TODO: turn inf div into its own component. can just pass in {...props} and then add pos as extra prop
+// TODO: add vertical mac doc? 
+// TODO: think about how to stream line making pages, can maybe include html in the page to reduce files
+// TODO: styled components?
+// TODO: add support for rendering pages in advance if big img or vid
+// TODO: option to add loaders
 
 interface Props {
   zoom: number,
