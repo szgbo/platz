@@ -1,6 +1,6 @@
 import React from 'react';
 
-import InfiniteCanvas from '../components/infiniteCanvas'
+import InfiniteCanvas from '../components/infiniteCanvas/infiniteCanvas'
 import Fruits from '../components/fruits'
 
 // import Dock from '../components/dock';

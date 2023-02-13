@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useRaf } from 'rooks';
 import { motion, useMotionValue, useSpring, useAnimation, MotionValue, useTransform } from "framer-motion";
 
-import styles from "../styles/Dock.module.css";
+import styles from "../../styles/Dock.module.css";
 
 const useDockHoverAnimation = (
   mouseX: MotionValue | null,  
@@ -146,7 +146,6 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
     <motion.span 
       animate={controls} 
       style={{ 
-        // width: `${widthPX.get() / 16}rem`,
         width,
         willChange: "width",
       }}
@@ -161,7 +160,6 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
           src={iconSrc}
           alt={iconTitle}
           style={{ 
-            // width: `${widthPX.get() / 16}rem`,
             width,
             willChange: "width",
           }}

@@ -1,8 +1,7 @@
 import React from 'react';
 
-import InfiniteCanvas from '../components/infiniteCanvas'
-import Fruits from '../components/fruits'
-import HomePage from '../components/homePage'
+import InfiniteCanvas from '../components/infiniteCanvas/infiniteCanvas'
+import HomePage from '../components/homeContent'
 
 // import Dock from '../components/dock';
 

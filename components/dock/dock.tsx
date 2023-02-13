@@ -1,7 +1,7 @@
 //  adapted from https://github.com/PuruVJ/macos-web/tree/main/src/components/Dock
 import React from "react";
 import { useMotionValue } from "framer-motion";
-import styles from "../styles/Dock.module.css";
+import styles from "../../styles/Dock.module.css";
 
 import DockItem from "./dockItem";
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { getTransform } from '../utils/infiniteHelper'
+import { getTransform } from '../../utils/infiniteHelper'
 
 import { TouchZoom } from "./touchZoom";
 interface Props {

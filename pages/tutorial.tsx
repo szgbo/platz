@@ -1,6 +1,6 @@
 import React from 'react';
 
-import InfiniteCanvas from '../components/infiniteCanvas'
+import InfiniteCanvas from '../components/infiniteCanvas/infiniteCanvas'
 import Cars from '../components/cars'
 
 // import Dock from '../components/dock';
