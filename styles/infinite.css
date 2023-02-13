@@ -6,8 +6,11 @@
     left: 0;
     overflow: hidden; 
     background-color: var(--background-color);
-    /* background-image: url(./bg1.png); */
-    background-repeat: no-repeat;
+    /* uncomment to use grid for designing and debugging */
+    /* one grid square is 25 units */
+    /* background-image: url(../public/grid.svg);
+    background-size: 200px 100px;
+    background-position: 1.9% 1.5%; */
 }
 
 .infinite-canvas {

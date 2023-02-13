@@ -3,13 +3,12 @@ import React from 'react';
 import InfiniteCanvas from '../components/infiniteCanvas/infiniteCanvas'
 import HomePage from '../components/homeContent'
 
-// TODO: add more props for inf canvas: min max y, etc
 // TODO: add vertical mac doc? 
 // TODO: styled components?
 // TODO: add support for rendering pages in advance if big img or vid
 //         option to add loaders
 //         SGG vs SSR OPTIONS
-// TODO: add grid backgroun to place things more easily on a specific page?
+// TODO: initial pre load? 
 
 // import Dock from '../components/dock';
 
