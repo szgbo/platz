@@ -82,27 +82,26 @@ interface Props {
   overlaySrc?: string;
 }
 export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlaySrc}: Props) {
+
+  function setIconImgSrc(src: string | undefined) {
+    const iconImg = document.querySelector('#' + pageName);
+    if (iconImg && src) {
+      iconImg.setAttribute('src', src);
+    }
+  }
+
   const router = useRouter();
   // change dot adn overlay on page reload
   useEffect(() => {
     if (router.pathname.includes(pageName) && pageName !== "home") {
       setDotOpacity(1);
-      const iconImg = document.querySelector('#' + pageName);
-      if (iconImg && overlaySrc) {
-        iconImg.setAttribute('src', overlaySrc);
-      }
+      setIconImgSrc(overlaySrc);
     } else if (pageName === "home" && router.pathname === "/") {
         setDotOpacity(1);
-        const iconImg = document.querySelector('#' + pageName);
-        if (iconImg && overlaySrc) {
-          iconImg.setAttribute('src', overlaySrc);
-        }
+        setIconImgSrc(overlaySrc);
     } else {
       setDotOpacity(0);
-      const iconImg = document.querySelector('#' + pageName);
-      if (iconImg && overlaySrc) {
-        iconImg.setAttribute('src', iconSrc);
-      }
+      setIconImgSrc(iconSrc);
     }
   }, [router.pathname])
   
@@ -162,15 +161,11 @@ export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlay
         willChange: "width",
       }}
       onMouseEnter={() => {
-        const iconImg = document.querySelector('#' + pageName);
-        if (iconImg && overlaySrc) {
-          iconImg.setAttribute('src', overlaySrc);
-        }
+        setIconImgSrc(overlaySrc);
       }}
       onMouseLeave={() => {
-        const iconImg = document.querySelector('#' + pageName);
-        if (iconImg && overlaySrc) {
-          iconImg.setAttribute('src', iconSrc);
+        if (!router.pathname.includes(pageName) && pageName !== "home") {
+          setIconImgSrc(iconSrc);
         }
       }}
       // ref={imgRef}

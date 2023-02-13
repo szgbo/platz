@@ -101,7 +101,7 @@
 .dock-item-tooltip {
   --double-border: 0 0 0 0 white;
   /* more negative = further away from icon */
-  top: -75%;
+  top: -80%;
   z-index: 70;
   white-space: nowrap;
   position: absolute;
