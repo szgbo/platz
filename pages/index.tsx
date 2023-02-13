@@ -1,13 +1,21 @@
 import React from 'react';
 
 import InfiniteCanvas from '../components/infiniteCanvas/infiniteCanvas'
-import HomeContent from '../components/homeContent'
+import HomePage from '../components/homeContent'
+
+// TODO: add more props for inf canvas: min max y, etc
+// TODO: add vertical mac doc? 
+// TODO: styled components?
+// TODO: add support for rendering pages in advance if big img or vid
+//         option to add loaders
+//         SGG vs SSR OPTIONS
+// TODO: add grid backgroun to place things more easily on a specific page?
 
 // import Dock from '../components/dock';
 
 export default function Home() {
   // infinite canvas is a higher order component that takes a component as an argument
-  const InfiniteContent = InfiniteCanvas(HomeContent)
+  const InfiniteContent = InfiniteCanvas(HomePage)
   // position and zoom values are arbitrary and serve as placeholders
   return (
     <div>

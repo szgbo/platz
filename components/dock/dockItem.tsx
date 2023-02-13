@@ -114,8 +114,8 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
   const controls = useAnimation();
   async function bounceEffect() {
     await controls.start({
-        transform: 'translate(0, -15px)',
-        transition: { duration: 0.4, ease: [0.5, 0.5, 0.5, 1] },
+      transform: 'translate(0, -15px)',
+      transition: { duration: 0.4, ease: [0.5, 0.5, 0.5, 1] },
     });
     await controls.start({
         transform: 'translate(0, 0.1px)',
@@ -125,7 +125,7 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
     await controls.start({
       transform: 'translate(0, 0)',
       transition: { duration: 0.1, ease: [0.5, 0.5, 0.5, 1] },
-  });
+    });
   }
 
   return (
@@ -144,7 +144,6 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
       {iconTitle}
     </motion.p>
     <motion.span 
-      animate={controls} 
       style={{ 
         width,
         willChange: "width",

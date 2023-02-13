@@ -7,6 +7,7 @@
     overflow: hidden; 
     background-color: var(--background-color);
     /* background-image: url(./bg1.png); */
+    background-repeat: no-repeat;
 }
 
 .infinite-canvas {

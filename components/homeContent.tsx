@@ -1,13 +1,6 @@
 import React, {useState} from 'react';
 import Center from './infiniteCanvas/center';
 
-// TODO: add more props for inf canvas: min max y, etc
-// TODO: add vertical mac doc? 
-// TODO: styled components?
-// TODO: add support for rendering pages in advance if big img or vid
-//         option to add loaders
-//         SGG vs SSR OPTIONS
-// TODO: initial pre load? 
 
 import { type infProps, type posDict, InfDiv } from './infiniteCanvas/infiniteDiv'
 
