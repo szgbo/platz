@@ -17,6 +17,7 @@ const InfiniteCanvas = <P extends infProps>(WrappedComponent: React.ComponentTyp
     const ID = "frame"
 
     // mount touchzoom to the infinite canvas div
+    // can change bounds in touchZoom.ts L59-L68
     useEffect(() => {
       const frame = document.getElementById(ID) as HTMLDivElement;
       const newTZ = new TouchZoom(frame);
