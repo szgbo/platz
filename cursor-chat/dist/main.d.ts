@@ -1,0 +1,1 @@
+export declare const initCursorChat: (room_id?: string, getCanvasCenterX?: function, getCanvasCenterY?: function, getCanvasZoom?: function, triggerKey?: string, cursorDivId?: string, chatDivId?: string) => {cleanup: () => void, handleInfiniteCanvasMove: (canvasCenterX: Number, canvasCenterY: Number, zoom: Number) => void};

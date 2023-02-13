@@ -152,6 +152,7 @@
         width: rect.width,
         height: rect.height,
       };
+      // console.log(this.#bounds)
     };
   
     #updateBoundsD = debounce(this.#updateBounds, 100);
