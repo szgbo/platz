@@ -1,26 +1,18 @@
 import React, {useState} from 'react';
-import { getTransform } from './infiniteHelper'
+import { type infProps, type posDict, InfDiv } from './infiniteDiv'
 
-
-interface Props {
-  zoom: number,
-  x: number,
-  y: number,
+const pos : posDict = {
+  title: [0, 0],
+  subtitle: [0, 50],
 }
 
-const pos = {
-  center: [0, 0],
-}
-
-const Center = ({x, y, zoom}: Props) => {
+const Center = (props: infProps) => {
 
   return (
     <>
-      <div className='inf-div' style={{ 
-        transform: getTransform(pos.center, [x, y], zoom) 
-      }}>
-        C
-      </div>
+      <InfDiv pos={pos.center} {...props}>
+        <h1> C </h1>
+      </InfDiv>
     </>
   )
 }

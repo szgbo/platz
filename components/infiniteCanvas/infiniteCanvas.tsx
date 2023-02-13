@@ -1,18 +1,21 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { getTransform } from './infiniteHelper'
 
 import { TouchZoom } from "./touchZoom";
+import { type infProps } from './infiniteDiv'
 interface Props {
   zoom: number,
   x: number,
   y: number,
-  // provide a color for the background if needed for a specific page
+  // provide a color/url for the page-specific custom background if needed
+  // otherwise change in infinite.css
   color?: string,
+  url?: string,
 }
 
 // higher order component that takes a component as an argument
-const InfiniteCanvas = <P extends Props>(WrappedComponent: React.ComponentType<P>) => {
+// HOC is used to pass in props to the wrapped component in a type-safe way
+const InfiniteCanvas = <P extends infProps>(WrappedComponent: React.ComponentType<P>) => {
   const InfiniteCanvasComponent = (props: P) => {
 
     const [zoom, setZoom] = useState(1.0)
@@ -42,6 +45,7 @@ const InfiniteCanvas = <P extends Props>(WrappedComponent: React.ComponentType<P
         className='infinite-container'
         style={{ 
           backgroundColor: props.color ? props.color : undefined,
+          backgroundImage: props.url ? `url(${props.url})` : undefined,
         }}
       >
         <div className='infinite-canvas' id={ID}>
