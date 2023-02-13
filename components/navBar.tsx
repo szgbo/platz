@@ -37,6 +37,13 @@ const NavBar = () => {
     changeActiveItem(index);
   }, []);
 
+  useEffect(() => {
+    const { pathname } = router;
+    const path = pathname.split('/')[1];
+    const index = initItems.findIndex(item => (item.text === path || (item.text === 'home' && path === '')));
+    changeActiveItem(index);
+  }, [router.pathname]);
+
   function changeActiveItem( i: number ) {
     const highlight = document.querySelector("#nav-item-highlighter") as HTMLElement;
     const item = document.querySelector(`#item-${i}`) as HTMLElement;
