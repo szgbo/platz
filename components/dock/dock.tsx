@@ -6,10 +6,7 @@ import styles from "../../styles/Dock.module.css";
 import DockItem from "./dockItem";
 // list of links and icons
 const pagesArr = ['home', 'features', 'tutorial', 'about', 'testCursor'];
-const icons = ['P_icon', 'L_icon', 'T_icon', 'A_icon', 'Z_icon']
-
-const pagesArr2 = ['testCursor']
-const icons2 = ['P_icon']
+const icons = ['P_icon', 'L_icon', 'T_icon', 'A_icon', 'Z_icon'];
 
 export function Dock() {
   // tracks x coordinate of mouse in dock
@@ -31,8 +28,10 @@ export function Dock() {
           return <DockItem 
             key={page} 
             mouseX={dockMouseX} 
-            iconSrc={"/icons/" + icons[i] + ".svg"}
+            iconSrc={"/icons/" + icons[i] + "_dark.svg"}
+            overlaySrc={"/icons/" + icons[i] + ".svg"}
             pageName={page}
+            doAnimation={false}
           />
         })}
       </div>

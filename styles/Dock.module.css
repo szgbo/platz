@@ -93,7 +93,8 @@
 /* style for the hover over titles */
 .dock-item-tooltip {
   --double-border: 0 0 0 0 white;
-  top: -50%;
+  /* more negative = further away from icon */
+  top: -75%;
   z-index: 70;
   white-space: nowrap;
   position: absolute;

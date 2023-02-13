@@ -78,17 +78,31 @@ interface Props {
   mouseX: MotionValue | null;
   iconSrc: string;
   pageName: string;
+  doAnimation?: boolean;
+  overlaySrc?: string;
 }
-export function DockItem({mouseX, iconSrc, pageName}: Props) {
+export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlaySrc}: Props) {
   const router = useRouter();
-  // change dot on page reload
+  // change dot adn overlay on page reload
   useEffect(() => {
     if (router.pathname.includes(pageName) && pageName !== "home") {
       setDotOpacity(1);
+      const iconImg = document.querySelector('#' + pageName);
+      if (iconImg && overlaySrc) {
+        iconImg.setAttribute('src', overlaySrc);
+      }
     } else if (pageName === "home" && router.pathname === "/") {
         setDotOpacity(1);
+        const iconImg = document.querySelector('#' + pageName);
+        if (iconImg && overlaySrc) {
+          iconImg.setAttribute('src', overlaySrc);
+        }
     } else {
       setDotOpacity(0);
+      const iconImg = document.querySelector('#' + pageName);
+      if (iconImg && overlaySrc) {
+        iconImg.setAttribute('src', iconSrc);
+      }
     }
   }, [router.pathname])
   
@@ -104,15 +118,14 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
 
   let link: string = pageName === "home" ? "/" : "/" + pageName;
   const imgRef = useRef<HTMLImageElement>(null);
-  const { width } = useDockHoverAnimation(mouseX, imgRef);
+  let { width } = useDockHoverAnimation(mouseX, imgRef);
+  
 
   const iconTitle = pageName;
 
-  `dsfh ${width} asdflk`
-  'dsfh' + width + 'asdflk'
-
   const controls = useAnimation();
   async function bounceEffect() {
+    if (!doAnimation) return;
     await controls.start({
       transform: 'translate(0, -15px)',
       transition: { duration: 0.4, ease: [0.5, 0.5, 0.5, 1] },
@@ -145,21 +158,33 @@ export function DockItem({mouseX, iconSrc, pageName}: Props) {
     </motion.p>
     <motion.span 
       style={{ 
-        width,
+        width: doAnimation? width : undefined,
         willChange: "width",
+      }}
+      onMouseEnter={() => {
+        const iconImg = document.querySelector('#' + pageName);
+        if (iconImg && overlaySrc) {
+          iconImg.setAttribute('src', overlaySrc);
+        }
+      }}
+      onMouseLeave={() => {
+        const iconImg = document.querySelector('#' + pageName);
+        if (iconImg && overlaySrc) {
+          iconImg.setAttribute('src', iconSrc);
+        }
       }}
       // ref={imgRef}
     >
       {/* <!-- img tag for the icon --> */}
         <motion.img
           animate={controls} 
-          id="dockItem-icon"
+          id={pageName}
           ref={imgRef}
           className={styles["dock-item-img"]}
           src={iconSrc}
           alt={iconTitle}
           style={{ 
-            width,
+            width: doAnimation? width : undefined,
             willChange: "width",
           }}
           draggable="false"
