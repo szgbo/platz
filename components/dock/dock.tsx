@@ -4,7 +4,7 @@ import { useMotionValue } from "framer-motion";
 import styles from "../../styles/Dock.module.css";
 
 import DockItem from "./dockItem";
-
+// list of links and icons
 const pagesArr = ['home', 'features', 'tutorial', 'about', 'testCursor'];
 const icons = ['P_icon', 'L_icon', 'T_icon', 'A_icon', 'Z_icon']
 
