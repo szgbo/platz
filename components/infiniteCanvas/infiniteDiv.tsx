@@ -1,6 +1,6 @@
 import React from "react";
 
-import { getTransform } from "../../utils/infiniteHelper";
+import { getTransform } from "./infiniteHelper";
 
 interface Props {
   pos: [number, number];

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Image from 'next/image'
-import { getTransform } from '../utils/infiniteHelper'
+import { getTransform } from './infiniteCanvas/infiniteHelper'
 
 interface Props {
   zoom: number,

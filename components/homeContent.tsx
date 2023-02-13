@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Image from 'next/image'
-import { getTransform } from '../utils/infiniteHelper'
+import { getTransform } from './infiniteCanvas/infiniteHelper'
 import { InfDiv } from './infiniteCanvas/infiniteDiv'
 import Center from './infiniteCanvas/center';
 

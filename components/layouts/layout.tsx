@@ -1,6 +1,6 @@
 
-import Dock from './dock/dock';
-import NavBar from './navBar';
+import Dock from '../dock/dock';
+import NavBar from '../navBar';
 
 interface LayoutProps {
   children: React.ReactNode

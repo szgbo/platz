@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { getTransform } from '../../utils/infiniteHelper'
+import { getTransform } from './infiniteHelper'
 
 
 interface Props {
