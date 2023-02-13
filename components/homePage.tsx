@@ -31,7 +31,7 @@ const positions = {
 
 const HomePage = ({x, y, zoom}: Props) => {
 
-  
+
 
   return (
     <>
@@ -43,16 +43,16 @@ const HomePage = ({x, y, zoom}: Props) => {
       <div className='inf-div' style={{ 
         transform: getTransform(positions.title, [x, y], zoom) 
       }}>
-        <div className='title'>
+        <h1>
           Platz
-        </div>
+        </h1>
       </div>
       <div className='inf-div' style={{ 
         transform: getTransform(positions.subtitle, [x, y], zoom) 
       }}>
-        <div className='subtitle'>
+        <h3>
           an open source personal website template for creatives
-        </div>
+        </h3>
       </div>
     </>
   )
