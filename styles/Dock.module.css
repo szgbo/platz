@@ -3,7 +3,7 @@
   left: 0;
   bottom: 10px;
   width: 100%;
-  height: 5rem;
+  height: 4.25rem;
   padding: 0.4rem;
   display: flex;
   justify-content: center;
@@ -29,7 +29,7 @@
      hsla(0, 0%, 60%, 0.4) 2px 2px 30px 5px;
   position: relative;
   padding: 0.3rem;
-  border-radius: 1.2rem;
+  border-radius: 0.3rem;
   height: 100%;
   display: flex;
   align-items: flex-end;
@@ -41,6 +41,10 @@
   width: max-content;
   display: flex;
   justify-content: space-between;
+  /* uncomment to use bg image */
+  background-image: url('../public/dock-bg.svg');
+  background-position: 0% 60%;
+  background-repeat: no-repeat;
 }
 
 .dock-el ::before:not(.overlay) {
@@ -76,6 +80,9 @@
   position: relative;
   border-radius: 0.5rem;
   align-items: center;
+
+  /* this will adjust width of dock */
+  margin: -0.18em 0.555em;
 }
 
 .dock-item-container:hover > .dock-item-tooltip {
