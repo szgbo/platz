@@ -37,6 +37,13 @@ const NavBar = () => {
     changeActiveItem(index);
   }, []);
 
+  useEffect(() => {
+    const { pathname } = router;
+    const path = pathname.split('/')[1];
+    const index = initItems.findIndex(item => (item.text === path || (item.text === 'home' && path === '')));
+    changeActiveItem(index);
+  }, [router.pathname]);
+
   function changeActiveItem( i: number ) {
     const highlight = document.querySelector("#nav-item-highlighter") as HTMLElement;
     const item = document.querySelector(`#item-${i}`) as HTMLElement;
@@ -45,8 +52,7 @@ const NavBar = () => {
       // use item offset and highlight offset and container offset to calculate the position of the highlighter
       const highlightOffset = highlight.offsetWidth / 2;
       const itemOffset = item.offsetLeft + item.offsetWidth / 2;
-      const containerOffset = container.offsetLeft;
-      const position = itemOffset + containerOffset - highlightOffset;
+      const position = itemOffset - highlightOffset;
       // use left % to position the highlighter
       highlight.style.left = `${position}px`;
     }

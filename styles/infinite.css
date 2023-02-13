@@ -5,7 +5,7 @@
     bottom: 0;
     left: 0;
     overflow: hidden; 
-    background-color: #f8f8f8;
+    background-color: var(--background-color);
     /* background-image: url(./bg1.png); */
 }
 

@@ -8,19 +8,26 @@
   position: relative;
   /* set absolute width to determine  */
   width: 40rem;
+
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  transform: translateX(-50%);
+  z-index: 99;
 }
 
 .nav-item {
-  color: rgb(169, 169, 169);
+  color: var(--gray-400);
   padding: 30px 25px;
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: var(--sf-pro-text);
+  font-size: 1em;
+  font-weight: 400;
   z-index: 2;
   text-decoration: none;
 }
-
 
 .nav-item-highlighter {
   width: 125px;
@@ -30,16 +37,16 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  box-shadow: 0px 5px 10px rgba(50, 50, 50, 0.5);
+  box-shadow: 0px 5px 10px rgba(50, 50, 50, 0.25);
   z-index: 1;
   visibility: hidden;
-  /* transition: left .25s; */
+  transition: left .25s;
 }
 
 /* division into a new thing here */
 
 .nav-item.active {
-  color: #000;
+  color: var(--gray-800);
 }
 
 .nav-item.active ~ .nav-item-highlighter {
