@@ -20,7 +20,7 @@ const TutorialContent = (props: infProps) => {
       <InfDiv {...props} pos={pos.message}>
         <div className={styles.message}>
           <h2>
-            We're designing a tutorial system that empowers those 
+            We are designing a tutorial system that empowers those 
             without any coding background to build their own website with ease.
           </h2>
         </div>
@@ -36,8 +36,8 @@ const TutorialContent = (props: infProps) => {
       <InfClickDiv {...props} pos={pos.link}>
         <div className={styles.link}>
           <h3>
-            <a href={'https://p576j33mzl2.typeform.com/to/C78XvI3z'} >
-                https://p576j33mzl2.typeform.com/to/C78XvI3z
+            <a href={"https://p576j33mzl2.typeform.com/to/C78XvI3z"} >
+                  https://p576j33mzl2.typeform.com/to/C78XvI3z
             </a>
           </h3>
         </div>
