@@ -12,6 +12,10 @@ import { getTransform } from '../utils/infiniteHelper'
 // TODO: styled components?
 // TODO: add support for rendering pages in advance if big img or vid
 // TODO: option to add loaders
+// TODO: SGG vs SSR OPTIONS
+// TODO: xy max for inf canvas
+// TODO: add option to do inf canvas on different corners
+// TODO: initial pre load? 
 
 interface Props {
   zoom: number,
@@ -26,6 +30,8 @@ const positions = {
 }
 
 const HomePage = ({x, y, zoom}: Props) => {
+
+  
 
   return (
     <>

@@ -45,8 +45,7 @@ const NavBar = () => {
       // use item offset and highlight offset and container offset to calculate the position of the highlighter
       const highlightOffset = highlight.offsetWidth / 2;
       const itemOffset = item.offsetLeft + item.offsetWidth / 2;
-      const containerOffset = container.offsetLeft;
-      const position = itemOffset + containerOffset - highlightOffset;
+      const position = itemOffset - highlightOffset;
       // use left % to position the highlighter
       highlight.style.left = `${position}px`;
     }

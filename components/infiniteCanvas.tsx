@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { getTransform } from '../utils/infiniteHelper'
 
 import { TouchZoom } from "./touchZoom";
-import NavBar, {navBarPosition} from './navBar';
 interface Props {
   zoom: number,
   x: number,
@@ -37,11 +36,6 @@ const InfiniteCanvas = <P extends Props>(WrappedComponent: React.ComponentType<P
     return (
       <div className='infinite-container'>
         <div className='infinite-canvas' id={ID}>
-          <div className='inf-click-div' style={{ 
-            transform: getTransform(navBarPosition, [x, y], zoom) 
-          }}>
-            <NavBar />
-          </div>
           <WrappedComponent {...props} zoom={zoom} x={x} y={y} />
         </div>
       </div>
