@@ -8,6 +8,9 @@ import DockItem from "./dockItem";
 const pagesArr = ['home', 'features', 'tutorial', 'about', 'testCursor'];
 const icons = ['home_icon', 'F_icon', 'D_icon', 'P_icon', 'P_icon']
 
+const pagesArr2 = ['testCursor']
+const icons2 = ['P_icon']
+
 export function Dock() {
   // tracks x coordinate of mouse in dock
   const dockMouseX = useMotionValue<number | null>(null);
