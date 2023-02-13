@@ -1,5 +1,5 @@
-
 import Dock from '../components/dock';
+import CommandMenu from '../components/cmdk';
 
 interface LayoutProps {
   children: React.ReactNode
@@ -7,9 +7,10 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <>
+    <div className="flex">
       {children}
       <Dock />
-    </>
+      <CommandMenu />
+    </div>
   )
 }

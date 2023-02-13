@@ -1,6 +1,8 @@
 // a sample page for self introduction
 
-import Head from 'next/head';
+// import Head from 'next/head';
+
+const Head = require('next/head');
 
 export const title = 'About me';
 

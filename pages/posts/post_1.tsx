@@ -1,6 +1,7 @@
 // a sample post page for content
 
-import Head from "next/head";
+// import Head from "next/head";
+const Head = require('next/head');
 
 export const title = "How to make a vue app";
 
