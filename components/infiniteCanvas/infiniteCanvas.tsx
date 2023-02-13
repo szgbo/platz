@@ -3,15 +3,7 @@ import { useState, useEffect } from 'react'
 
 import { TouchZoom } from "./touchZoom";
 import { type infProps } from './infiniteDiv'
-interface Props {
-  zoom: number,
-  x: number,
-  y: number,
-  // provide a color/url for the page-specific custom background if needed
-  // otherwise change in infinite.css
-  color?: string,
-  url?: string,
-}
+
 
 // higher order component that takes a component as an argument
 // HOC is used to pass in props to the wrapped component in a type-safe way

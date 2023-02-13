@@ -6,7 +6,7 @@ import styles from "../../styles/Dock.module.css";
 import DockItem from "./dockItem";
 
 const pagesArr = ['home', 'features', 'tutorial', 'about', 'testCursor'];
-const icons = ['home_icon', 'F_icon', 'D_icon', 'P_icon', 'P_icon']
+const icons = ['P_icon', 'L_icon', 'T_icon', 'A_icon', 'Z_icon']
 
 const pagesArr2 = ['testCursor']
 const icons2 = ['P_icon']
