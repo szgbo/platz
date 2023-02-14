@@ -31,8 +31,12 @@ const InfiniteCanvas = <P extends Props>(
     const ID = "frame";
 
     useEffect(() => {
-      let cleanup;
-      let handleInfiniteCanvasMove;
+      let cleanup: () => void;
+      let handleInfiniteCanvasMove: (
+        arg0: number,
+        arg1: number,
+        arg2: number
+      ) => void;
       try {
         const init = initCursorChat(
           "platz_cursor_chat_room_infinite_canvas",
@@ -45,6 +49,7 @@ const InfiniteCanvas = <P extends Props>(
         handleInfiniteCanvasMove = init.handleInfiniteCanvasMove;
       } catch (e) {
         console.log(e);
+        return;
       }
 
       const frame = document.getElementById(ID) as HTMLDivElement;

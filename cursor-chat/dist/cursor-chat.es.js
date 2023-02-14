@@ -9505,7 +9505,7 @@ var _PerfectCursor = class {
 var PerfectCursor = _PerfectCursor;
 // Shorter MAX_INTERVAL makes cursor more jittery
 // PerfectCursor.MAX_INTERVAL = 300;
-PerfectCursor.MAX_INTERVAL = 50;
+PerfectCursor.MAX_INTERVAL = 100;
 let nanoid = (size = 21) => crypto.getRandomValues(new Uint8Array(size)).reduce((id, byte) => {
   byte &= 63;
   if (byte < 36) {
