@@ -17,7 +17,6 @@ const nextConfig = {
 // module.exports = nextConfig
 module.exports = (phase, { defaultConfig }) => {
   return {
-    ...defaultConfig,
     ...nextConfig,
     env: {
       cmdk: getPosts.getPosts(),

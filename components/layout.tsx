@@ -10,7 +10,7 @@ export default function Layout({ children }: LayoutProps) {
     <div className="flex">
       {children}
       <Dock />
-      <CommandMenu />
+      <CommandMenu/>
     </div>
   )
 }
