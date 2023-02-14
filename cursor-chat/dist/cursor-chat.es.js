@@ -9883,7 +9883,9 @@ const getTransform = (pos, center, zoom) => {
     )`;
   }
 const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZoom, triggerKey = "/", cursorDivId = "cursor-chat-layer", chatDivId = "cursor-chat-box") => {
-  const cursorDiv = document.getElementById(cursorDivId);
+  // const cursorDiv = document.getElementById(cursorDivId);
+  // Set cursorDiv to be the infinite canvas div
+  const cursorDiv = document.getElementById("frame")
   const chatDiv = document.getElementById(chatDivId);
   if (!cursorDiv || !chatDiv) {
     throw `Couldn't find cursor-chat-related divs! Make sure DOM content is fully loaded before initializing`;
@@ -9940,13 +9942,13 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
         (1 / zoom) * (evt.pageY - canvasCenterY + getCanvasCenterY());
       
       // console.log(getCanvasCenterX(), getCanvasCenterY())
-      // console.log(
-      //   mouseXRelativeToInfiniteCanvas,
-      //   mouseYRelativeToInfiniteCanvas
-      // );
+      console.log(
+        mouseXRelativeToInfiniteCanvas,
+        mouseYRelativeToInfiniteCanvas
+      );
 
       me.x = mouseXRelativeToInfiniteCanvas;
-      me.y = mouseXRelativeToInfiniteCanvas;
+      me.y = mouseYRelativeToInfiniteCanvas;
       // chatDiv.style.setProperty("transform", `translate(${me.x}px, ${me.y}px)`);
     }
   };
@@ -10045,6 +10047,8 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
             }
             updated_chat_div.innerText = updated_cursor.chat;
             updated_cursor_div.classList.remove("new");
+
+            console.log("Update:", updated_cursor.x, updated_cursor.y)
 
             cursor_interp.get(cursor_id).addPoint([updated_cursor.x, updated_cursor.y]);
 
