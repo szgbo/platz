@@ -55,6 +55,8 @@
   backdrop-filter: blur(21.4378px);
   margin: auto;
 
+  display: flex;
+  justify-content: space-between;
 
   /* uncomment to use bg image */
   background-image: url('../public/dock-bg.svg');
@@ -76,8 +78,6 @@
 }
 
 .dock-el-left {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
   height: max-content;
   flex-direction: column;
@@ -85,8 +85,6 @@
 }
 
 .dock-el-right {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
   height: max-content;
   flex-direction: column;
@@ -94,8 +92,6 @@
 }
 
 .dock-el-bottom {
-  display: flex;
-  justify-content: space-between;
   width: max-content;
   height: 100%;
   flex-direction: row;
@@ -117,12 +113,8 @@
 
 /* css for the icon buttons */
 .dock-item-container {
-  /* display: flex; */
-  /* justify-content: flex-end; */
   position: relative;
   border-radius: 0.5rem;
-  /* align-items: center; */
-  
 }
 
 .dock-item-container:hover > .dock-item-tooltip {
