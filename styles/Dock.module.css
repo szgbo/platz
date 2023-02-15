@@ -1,9 +1,4 @@
 .dock-container {
-  padding-bottom: 0.7rem;
-  left: 0;
-  bottom: 10px;
-  width: 5rem;
-  height: 100%;
   padding: 0.4rem;
   display: flex;
   justify-content: center;
@@ -12,28 +7,28 @@
   margin: auto;
 }
 
-.dock-container-left::before {
+.dock-container-left {
   padding-left: 0.7rem;
   left: 40px;
   bottom: 0;
   height: 100%;
-  width: 4.25rem;
+  width: var(--dock-short-edge-length);
 }
 
-.dock-container-right::before {
+.dock-container-right {
   padding-left: 0.7rem;
   right: 40px;
   bottom: 0;
   height: 100%;
-  width: 4.25rem;
+  width: var(--dock-short-edge-length);
 }
 
-.dock-container-bottom::before {
+.dock-container-bottom {
   padding-bottom: 0.7rem;
   left: 0;
   bottom: 40px;
   width: 100%;
-  height: 4.25rem;
+  height: var(--dock-short-edge-length);
 }
 
 
@@ -55,21 +50,16 @@
      hsla(0, 0%, 60%, 0.4) 2px 2px 30px 5px;
   position: relative;
   padding: 0.3rem;
-  border-radius: 1.2rem;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
+  border-radius: var(--dock-border-radius);
   transition: transform 0.3s ease;
   backdrop-filter: blur(21.4378px);
-
   margin: auto;
-  height: max-content;
-  justify-content: space-between;
-  flex-direction: column;
+
+
   /* uncomment to use bg image */
-  /* background-image: url('../public/dock-bg.svg');
+  background-image: url('../public/dock-bg.svg');
   background-position: 0% 60%;
-  background-repeat: no-repeat; */
+  background-repeat: no-repeat;
 }
 
 .dock-el ::before:not(.overlay) {
@@ -85,21 +75,27 @@
   z-index: -1;
 }
 
-.dock-el-left::before {
+.dock-el-left {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: max-content;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.dock-el-right::before {
+.dock-el-right {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: max-content;
   flex-direction: column;
   align-items: flex-end;
 }
 
-.dock-el-bottom::before {
+.dock-el-bottom {
+  display: flex;
+  justify-content: space-between;
   width: max-content;
   height: 100%;
   flex-direction: row;
@@ -121,15 +117,12 @@
 
 /* css for the icon buttons */
 .dock-item-container {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  /* display: flex; */
+  /* justify-content: flex-end; */
   position: relative;
   border-radius: 0.5rem;
-  align-items: center;
-
-  /* this will adjust width of dock */
-  margin: -0.18em 0.555em;
+  /* align-items: center; */
+  
 }
 
 .dock-item-container:hover > .dock-item-tooltip {
@@ -140,19 +133,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.4rem 0.398rem;
+    padding: 0.4rem;
+    margin: 0.2rem 0,
   }
 
-.dock-item-container-left::before {
+.dock-item-container-left {
+  display: flex;
+  justify-content: flex-end;
   flex-direction: row-reverse;
+  align-items: center;
 }
 
-.dock-item-container-right::before {
+.dock-item-container-right {
+  display: flex;
+  justify-content: flex-end;
   flex-direction: row;
+  align-items: center;
+
 }
 
-.dock-item-container-bottom::before {
-  flex-direction: column
+.dock-item-container-bottom {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
+  margin: -0.18em 0.555em;
 }
 
 
@@ -160,7 +165,6 @@
 .dock-item-tooltip {
   --double-border: 0 0 0 0 white;
   /* FIXME: changed left and top */
-  left: 105%;
   z-index: 70;
   white-space: nowrap;
   position: absolute;
@@ -175,21 +179,20 @@
   font-size: 0.9rem;
   letter-spacing: 0.4px;
   display: none;
-  text-align: left;
   width: fit-content;
 }
 
-.dock-item-tooltip-left::before {
+.dock-item-tooltip-left {
   left: 110%;
   text-align: left;
 }
 
-.dock-item-tooltip-right::before {
+.dock-item-tooltip-right {
   right: 110%;
   text-align: right;
 }
 
-.dock-item-tooltip-bottom::before {
+.dock-item-tooltip-bottom {
   top: -80%;
   text-align: center;
 }

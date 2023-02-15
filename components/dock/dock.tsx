@@ -13,7 +13,7 @@ export function Dock() {
   // tracks coordinate of mouse in dock
   const dockMouseX = useMotionValue<number | null>(null);
 
-  const direction: 'left' | 'right' | 'bottom' = 'left';
+  let direction: 'left' | 'right' | 'bottom' = 'bottom';
 
   return (
     // z-index 50 in css
@@ -27,7 +27,11 @@ export function Dock() {
           styles["dock-el-" + direction]
         )}
         onMouseMove={(e) => { 
-          dockMouseX.set(e.nativeEvent.y) 
+          if (direction === 'left' || direction === 'right') {
+            dockMouseX.set(e.nativeEvent.y)
+          } else {
+            dockMouseX.set(e.nativeEvent.x)
+          }
         }}
         onMouseLeave={() => { 
           dockMouseX.set(null); 
@@ -41,6 +45,7 @@ export function Dock() {
             overlaySrc={"/icons/" + icons[i] + ".svg"}
             pageName={page}
             direction={direction}
+            doAnimation={false}
           />
         })}
       </div>

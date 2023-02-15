@@ -63,7 +63,12 @@ const useDockHoverAnimation = (
     const mouseXVal = mouseX?.get();
     if (el && mouseXVal !== null) {
       const rect = el.getBoundingClientRect();
-      const imgCenterX = rect.top + rect.height / 2;
+      let imgCenterX = 0;
+      if (direction == 'bottom') {
+        imgCenterX = rect.left + rect.width / 2;
+      } else {
+        imgCenterX = rect.top + rect.height / 2;
+      }
       // difference between the x coordinate value of the mouse pointer
       // and the img center x coordinate value
       const distanceDelta = mouseXVal - imgCenterX;
@@ -181,9 +186,8 @@ export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlay
     <motion.span 
       style={{ 
         // width: `${widthPX.get() / 16}rem`,
-        height: doAnimation? width : undefined,
-        willChange: "height",
-        margin: "0.2rem 0",
+        width: doAnimation? width : undefined,
+        willChange: "width",
       }}
       onMouseEnter={() => {
         setIconImgSrc(overlaySrc);
@@ -205,8 +209,8 @@ export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlay
           alt={iconTitle}
           style={{ 
             // width: `${widthPX.get() / 16}rem`,
-            height: doAnimation? width : undefined,
-            willChange: "height",
+            width: doAnimation? width : undefined,
+            willChange: "width",
           }}
           draggable="false"
         />
