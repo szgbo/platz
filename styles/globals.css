@@ -1,126 +1,253 @@
-.title {
+:root {
+  --sf-pro-text: 'SF Pro Text';
+  --sf-pro-display: 'SF Pro Display';
+  --background-color: #f8f8f8;
+  
+  --white: #fff;
+  --gray-300: #f5f5f5;
+  --gray-400: #a6a2a9;
+  --gray-500: #757575;
+  --gray-600: #555555;
+  --gray-700: #353340;
+  --gray-800: #151515;
+
+  --dock-background-color: rgba(224, 224, 224, 0.75);
+}
+
+h1 {
+  font-family: var(--sf-pro-display);
   font-size: 4rem;
   font-weight: 700;
-  line-height: 1.2;
-  color: #555555;
+  color: var(--gray-600);
   text-transform: uppercase;
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
-.subtitle {
+h2 {
+  font-family: var(--sf-pro-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gray-600);
+  text-transform: capitalize;
+}
+
+h3 {
+  font-family: var(--sf-pro-display);
   font-size: 1.5rem;
   font-weight: 400;
-  line-height: 1.2;
-  color: #555555;
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  color: var(--gray-600);
 }
 
-
-/* :root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+h6 {
+  font-family: var(--sf-pro-display);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--gray-600);
 }
 
+p {
+  font-family: var(--sf-pro-text);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--gray-600);
+}
+
+/* if dark mode  */
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
+    --main-color: #fff;
   }
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+
+/* fonts obtained from https://developer.apple.com/fonts/ */
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 100;
+  src: url(./fonts/SF-Pro-Display-Thin.otf) format('opentype');
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 200;
+  src: url(./fonts/SF-Pro-Display-Ultralight.otf) format('opentype');
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 300;
+  src: url(./fonts/SF-Pro-Display-Light.otf) format('opentype');
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url(./fonts/SF-Pro-Display-Regular.otf) format('opentype');
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-} */
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 500;
+  src: url(./fonts/SF-Pro-Display-Medium.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 600;
+  src: url(./fonts/SF-Pro-Display-Semibold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 700;
+  src: url(./fonts/SF-Pro-Display-Bold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 900;
+  src: url(./fonts/SF-Pro-Display-Heavy.otf) format('opentype');
+}
+
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 1000;
+  src: url(./fonts/SF-Pro-Display-Black.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 200;
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Display-UltralightItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 300;
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Display-LightItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Display-RegularItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 500;
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Display-MediumItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 600;
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Display-SemiboldItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 700;
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Display-BoldItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 900;
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Display-HeavyItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 100;
+  src: url(./fonts/SF-Pro-Text-Thin.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 200;
+  src: url(./fonts/SF-Pro-Text-Ultralight.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 300;
+  src: url(./fonts/SF-Pro-Text-Light.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url(./fonts/SF-Pro-Text-Regular.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 500;
+  src: url(./fonts/SF-Pro-Text-Medium.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 700;
+  src: url(./fonts/SF-Pro-Text-Bold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 900;
+  src: url(./fonts/SF-Pro-Text-Heavy.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 1000;
+  src: url(./fonts/SF-Pro-Text-Black.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 200;
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Text-UltralightItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 300;
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Text-LightItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Text-RegularItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 500;
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Text-MediumItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 700;
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Text-BoldItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 900;
+  font-style: italic;
+  src: url(./fonts/SF-Pro-Text-HeavyItalic.otf) format('opentype');
+}
 

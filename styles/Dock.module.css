@@ -21,10 +21,10 @@
   }
 }
 
-/*  dock el is first div instide container */
+/*  styles for the dock base */
 .dock-el {
    /* hsla: hue, saturation, lightness, alpha */
-  background-color: rgba(224, 224, 224, 0.75);
+  background-color: var(--dock-background-color);
   /* background-color: #F3F3F3; */
   box-shadow: inset 0 0 0 0.2px hsla(0, 0%, 96%, 0.7),
      hsla(0, 0%, 60%, 0.4) 2px 2px 30px 5px;
@@ -43,6 +43,10 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  /* uncomment to use bg image */
+  /* background-image: url('../public/dock-bg.svg');
+  background-position: 0% 60%;
+  background-repeat: no-repeat; */
 }
 
 .dock-el ::before:not(.overlay) {
@@ -61,7 +65,7 @@
 .divider {
   height: 100%;
   width: 0.2px;
-  background-color: hsla(240, 24%, 100%, 0.3);
+  background-color: hsla(0, 0%, 26%, 0.3);
   margin: 0 4px;
 }
 
@@ -69,6 +73,7 @@
   /* set up browser for performance optimization */
   will-change: width;
 }
+
 /* css for the icon buttons */
 .dock-item-container {
   display: flex;
@@ -77,9 +82,11 @@
   position: relative;
   border-radius: 0.5rem;
   align-items: center;
+
+  /* this will adjust width of dock */
+  margin: -0.18em 0.555em;
 }
 
-/* the hover doesnt work */
 .dock-item-container:hover > .dock-item-tooltip {
     display: block;
 }
@@ -88,7 +95,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.4rem;
+    padding: 0.4rem 0.398rem;
   }
 
 
@@ -101,14 +108,14 @@
   z-index: 70;
   white-space: nowrap;
   position: absolute;
-  background-color: rgba(244, 244, 244, 0.75);
+  background-color: var(--dock-background-color);
   backdrop-filter: blur(5px);
   padding: 0.5rem 0.75rem;
   border-radius: 0.375rem;
   box-shadow: hsla(0deg, 0%, 0%, 30%) 0px 1px 5px 2px, var(--double-border);
-  color: hsl(240, 3%, 11%);
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-  font-weight: 10;
+  color: var(--gray-800);
+  font-family: var(--sf-pro-text);
+  font-weight: 400;
   font-size: 0.9rem;
   letter-spacing: 0.4px;
   display: none;
@@ -122,8 +129,5 @@
   width: 4px;
   margin: 0px;
   border-radius: 50%;
-  /* background-color: hsl(240, 24%, 100%); */
-  /* TODO change color back later */
-  background-color: #777777;
-  /* background-color: white; */
+  background-color: var(--gray-500);
 }

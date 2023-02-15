@@ -5,8 +5,12 @@
     bottom: 0;
     left: 0;
     overflow: hidden; 
-    background-color: #f8f8f8;
-    /* background-image: url(./bg1.png); */
+    background-color: var(--background-color);
+    /* uncomment to use grid for designing and debugging */
+    /* one grid square is 25 units */
+    /* background-image: url(../public/grid.svg);
+    background-size: 200px 100px;
+    background-position: 1.9% 1.5%; */
 }
 
 .infinite-canvas {
@@ -28,4 +32,5 @@
 
 .inf-click-div {
     position: absolute;
+    user-select: none;
 }
