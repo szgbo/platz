@@ -8,12 +8,14 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useRaf } from 'rooks';
 import { motion, useMotionValue, useSpring, useAnimation, MotionValue, useTransform } from "framer-motion";
+import cx from 'classnames';
 
 import styles from "../../styles/Dock.module.css";
 
 const useDockHoverAnimation = (
   mouseX: MotionValue | null,  
   ref: RefObject<HTMLImageElement>,
+  direction: 'left' | 'right' | 'bottom',
 ) => {
     // constants for animation
   // this is the distance from the center of the dock item to the edge of the dock item
@@ -65,7 +67,11 @@ const useDockHoverAnimation = (
       // difference between the x coordinate value of the mouse pointer
       // and the img center x coordinate value
       const distanceDelta = mouseXVal - imgCenterX;
-      distance.set(distanceDelta);
+      if (direction === 'right') {
+        distance.set(-distanceDelta);
+      } else {
+        distance.set(distanceDelta);
+      }
       return;
     }
 
@@ -80,7 +86,7 @@ interface Props {
   mouseX: MotionValue | null;
   iconSrc: string;
   pageName: string;
-  direction: 'left' | 'right' | 'bottom' | 'top';
+  direction: 'left' | 'right' | 'bottom' ;
   doAnimation?: boolean;
   overlaySrc?: string;
 }
@@ -120,7 +126,7 @@ export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlay
 
   let link: string = pageName === "home" ? "/" : "/" + pageName;
   const imgRef = useRef<HTMLImageElement>(null);
-  let { width } = useDockHoverAnimation(mouseX, imgRef);
+  let { width } = useDockHoverAnimation(mouseX, imgRef, direction);
   
 
   const iconTitle = pageName;
@@ -134,8 +140,6 @@ export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlay
         coords = ["15px, 0", "-0.1px, 0", "0, 0"];
     } else if (direction === "bottom") {
         coords = ["0, -15px", "0, 0.1px", "0, 0"];
-    } else if (direction === "top") {
-        coords = ["0, 15px", "0, -0.1px", "0, 0"];
     }
     if (!doAnimation) return;
     await controls.start({
@@ -159,12 +163,18 @@ export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlay
       href={link} 
       onClick={bounceEffect} 
       aria-label={iconTitle} 
-      className={styles["dock-item-container"]}
+      className={cx(
+        styles["dock-item-container"],
+        styles[`dock-item-container-${direction}`]
+      )}
     >
     {/* <!-- label tag for text ontop --> */}
     <motion.p
       animate={controls}
-      className={styles["dock-item-tooltip"]}
+      className={cx(
+        styles["dock-item-tooltip"],
+        styles[`dock-item-tooltip-${direction}`]
+      )}
     >
       {iconTitle}
     </motion.p>

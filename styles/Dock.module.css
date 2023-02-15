@@ -7,12 +7,37 @@
   padding: 0.4rem;
   display: flex;
   justify-content: center;
-  z-index: 80;
-  
-
+  z-index: 80;  
   position: fixed;
   margin: auto;
 }
+
+.dock-container-left::before {
+  padding-left: 0.7rem;
+  left: 40px;
+  bottom: 0;
+  height: 100%;
+  width: 4.25rem;
+}
+
+.dock-container-right::before {
+  padding-left: 0.7rem;
+  right: 40px;
+  bottom: 0;
+  height: 100%;
+  width: 4.25rem;
+}
+
+.dock-container-bottom::before {
+  padding-bottom: 0.7rem;
+  left: 0;
+  bottom: 40px;
+  width: 100%;
+  height: 4.25rem;
+}
+
+
+
 /* FIXME: change later for vertical */
 @media (min-width: 768px) {
   .dock {
@@ -37,10 +62,8 @@
   transition: transform 0.3s ease;
   backdrop-filter: blur(21.4378px);
 
-
   margin: auto;
   height: max-content;
-  display: flex;
   justify-content: space-between;
   flex-direction: column;
   /* uncomment to use bg image */
@@ -62,6 +85,27 @@
   z-index: -1;
 }
 
+.dock-el-left::before {
+  width: 100%;
+  height: max-content;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dock-el-right::before {
+  width: 100%;
+  height: max-content;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.dock-el-bottom::before {
+  width: max-content;
+  height: 100%;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
 .divider {
   height: 100%;
   width: 0.2px;
@@ -72,6 +116,7 @@
 .dock-item-img {
   /* set up browser for performance optimization */
   will-change: width;
+  will-change: height;
 }
 
 /* css for the icon buttons */
@@ -98,13 +143,24 @@
     padding: 0.4rem 0.398rem;
   }
 
+.dock-item-container-left::before {
+  flex-direction: row-reverse;
+}
+
+.dock-item-container-right::before {
+  flex-direction: row;
+}
+
+.dock-item-container-bottom::before {
+  flex-direction: column
+}
+
 
 /* style for the hover over titles */
 .dock-item-tooltip {
   --double-border: 0 0 0 0 white;
   /* FIXME: changed left and top */
   left: 105%;
-  top: 35%;
   z-index: 70;
   white-space: nowrap;
   position: absolute;
@@ -121,6 +177,21 @@
   display: none;
   text-align: left;
   width: fit-content;
+}
+
+.dock-item-tooltip-left::before {
+  left: 110%;
+  text-align: left;
+}
+
+.dock-item-tooltip-right::before {
+  right: 110%;
+  text-align: right;
+}
+
+.dock-item-tooltip-bottom::before {
+  top: -80%;
+  text-align: center;
 }
 
 /* dot for underneath */
