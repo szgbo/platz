@@ -29,6 +29,10 @@
   text-decoration: none;
 }
 
+.nav-item:hover .nav-item-text{
+  color: var(--gray-800);
+}
+
 .nav-item-highlighter {
   width: 125px;
   height: 55%;
@@ -42,6 +46,7 @@
   visibility: hidden;
   transition: left .25s;
 }
+
 
 /* division into a new thing here */
 

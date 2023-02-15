@@ -24,7 +24,6 @@ const initItems = [{
   active: false,
 }]
 
-export const navBarPosition = [0,-300];
 
 const NavBar = () => {
   const [items, setItems] = useState<Item[]>(initItems);
