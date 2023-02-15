@@ -1,17 +1,21 @@
 // adapted from https://github.com/PuruVJ/macos-web/tree/main/src/components/Dock
 
+//TODO: make styles more modular for vertical and horizontal dock
+
 import React, { useEffect, useRef, useState } from "react";
 import type { RefObject } from "react";
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useRaf } from 'rooks';
 import { motion, useMotionValue, useSpring, useAnimation, MotionValue, useTransform } from "framer-motion";
+import cx from 'classnames';
 
 import styles from "../../styles/Dock.module.css";
 
 const useDockHoverAnimation = (
   mouseX: MotionValue | null,  
   ref: RefObject<HTMLImageElement>,
+  direction: 'left' | 'right' | 'bottom',
 ) => {
     // constants for animation
   // this is the distance from the center of the dock item to the edge of the dock item
@@ -59,11 +63,20 @@ const useDockHoverAnimation = (
     const mouseXVal = mouseX?.get();
     if (el && mouseXVal !== null) {
       const rect = el.getBoundingClientRect();
-      const imgCenterX = rect.left + rect.width / 2;
+      let imgCenterX = 0;
+      if (direction == 'bottom') {
+        imgCenterX = rect.left + rect.width / 2;
+      } else {
+        imgCenterX = rect.top + rect.height / 2;
+      }
       // difference between the x coordinate value of the mouse pointer
       // and the img center x coordinate value
       const distanceDelta = mouseXVal - imgCenterX;
-      distance.set(distanceDelta);
+      if (direction === 'right') {
+        distance.set(-distanceDelta);
+      } else {
+        distance.set(distanceDelta);
+      }
       return;
     }
 
@@ -78,10 +91,11 @@ interface Props {
   mouseX: MotionValue | null;
   iconSrc: string;
   pageName: string;
+  direction: 'left' | 'right' | 'bottom' ;
   doAnimation?: boolean;
   overlaySrc?: string;
 }
-export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlaySrc}: Props) {
+export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlaySrc, direction}: Props) {
 
   function setIconImgSrc(src: string | undefined) {
     const iconImg = document.querySelector('#' + pageName);
@@ -117,25 +131,33 @@ export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlay
 
   let link: string = pageName === "home" ? "/" : "/" + pageName;
   const imgRef = useRef<HTMLImageElement>(null);
-  let { width } = useDockHoverAnimation(mouseX, imgRef);
+  let { width } = useDockHoverAnimation(mouseX, imgRef, direction);
   
 
   const iconTitle = pageName;
 
   const controls = useAnimation();
   async function bounceEffect() {
+    var coords = ["", "", ""];
+    if (direction === "right") {
+      coords = ["-15px, 0", "0.1px, 0", "0, 0"];
+    } else if (direction === "left") {
+        coords = ["15px, 0", "-0.1px, 0", "0, 0"];
+    } else if (direction === "bottom") {
+        coords = ["0, -15px", "0, 0.1px", "0, 0"];
+    }
     if (!doAnimation) return;
     await controls.start({
-      transform: 'translate(0, -15px)',
-      transition: { duration: 0.4, ease: [0.5, 0.5, 0.5, 1] },
+        transform: `translate(${coords[0]})`,
+        transition: { duration: 0.4, ease: [0.5, 0.5, 0.5, 1] },
     });
     await controls.start({
-        transform: 'translate(0, 0.1px)',
+        transform: `translate(${coords[1]})`,
         transition: { duration: 0.4, ease: [0.5, 0.5, 0.5, 1] },
     });
     // for some reason translating to (0,0) doesn't play an animation
     await controls.start({
-      transform: 'translate(0, 0)',
+      transform: `translate(${coords[2]})`,
       transition: { duration: 0.1, ease: [0.5, 0.5, 0.5, 1] },
     });
   }
@@ -146,17 +168,24 @@ export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlay
       href={link} 
       onClick={bounceEffect} 
       aria-label={iconTitle} 
-      className={styles["dock-item-container"]}
+      className={cx(
+        styles["dock-item-container"],
+        styles[`dock-item-container-${direction}`]
+      )}
     >
     {/* <!-- label tag for text ontop --> */}
     <motion.p
       animate={controls}
-      className={styles["dock-item-tooltip"]}
+      className={cx(
+        styles["dock-item-tooltip"],
+        styles[`dock-item-tooltip-${direction}`]
+      )}
     >
       {iconTitle}
     </motion.p>
     <motion.span 
       style={{ 
+        // width: `${widthPX.get() / 16}rem`,
         width: doAnimation? width : undefined,
         willChange: "width",
       }}
@@ -179,6 +208,7 @@ export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlay
           src={iconSrc}
           alt={iconTitle}
           style={{ 
+            // width: `${widthPX.get() / 16}rem`,
             width: doAnimation? width : undefined,
             willChange: "width",
           }}
