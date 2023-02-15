@@ -1,5 +1,13 @@
 import React from "react";
 
+export interface touchZoomConfig {
+  minZoom?: number,
+  maxZoom?: number,
+  minX?: number,
+  maxX?: number,
+  minY?: number,
+  maxY?: number,
+}
 export interface infProps {
   pos?: [number, number],
   zoom: number,
@@ -9,6 +17,7 @@ export interface infProps {
   align?: alignOption,
   color?: string,
   url?: string,
+  config?: touchZoomConfig,
 }
 export type posDict = { [key: string]: [number, number] };
 

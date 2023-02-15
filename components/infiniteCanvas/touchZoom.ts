@@ -16,6 +16,7 @@
     type WebKitGestureEvent,
   } from "@use-gesture/vanilla";
   import Vec from "@tldraw/vec";
+  import { touchZoomConfig } from "./infiniteDiv";
 
   const util = require('util')
   
@@ -55,20 +56,21 @@
       timeoutId = setTimeout(() => fn.apply(args), ms);
     };
   }
-  
-  // config for zoom and pan bounds
-  const MIN_ZOOM = 0.1;
-  const MAX_ZOOM = 10;
 
-  const MIN_X = -100;
-  const MAX_X = 100;
-  const MIN_Y = -1000;
-  const MAX_Y = 500;
+  // config for zoom and pan bounds
+  let MIN_ZOOM = 0.1;
+  let MAX_ZOOM = 10;
+
+  let MIN_X = -100;
+  let MAX_X = 100;
+  let MIN_Y = -1000;
+  let MAX_Y = 500;
   
-  const IS_FINITE = false;
-  
+  let IS_FINITE = false;
+
   export class TouchZoom {
     #node: HTMLElement | null;
+    #config: touchZoomConfig | undefined;
     #scrollingAnchor: HTMLElement | Document;
     #gesture: Gesture;
     #resizeObserver: ResizeObserver;
@@ -94,9 +96,20 @@
   
     #preventGesture = (event: TouchEvent) => event.preventDefault();
   
-    constructor(node: HTMLElement) {
+    constructor(node: HTMLElement, config?: touchZoomConfig) {
       // console.log(util.inspect(node, false, 1, true /* enable colors */))
       this.#node = node;
+      this.#config = config;
+      if (config) {
+        MIN_ZOOM = config.minZoom || MIN_ZOOM;
+        MAX_ZOOM = config.maxZoom || MAX_ZOOM;
+        MIN_X = config.minX || MIN_X;
+        MAX_X = config.maxX || MAX_X;
+        MIN_Y = config.minY || MIN_Y;
+        MAX_Y = config.maxY || MAX_Y;
+        // IS_FINITE is true if any of the config bounds are defined
+        IS_FINITE = !!( config.minX || config.maxX || config.minY || config.maxY );
+      }
       this.#scrollingAnchor = getNearestScrollableContainer(node);
       // @ts-ignore
       document.addEventListener("gesturestart", this.#preventGesture);
