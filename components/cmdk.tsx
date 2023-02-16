@@ -17,6 +17,7 @@ export default function CommandMenu() {
     React.useEffect(() => {
         const downHandler = (e: any) => {
             if (e.key === 'k' && e.metaKey || e.key === 'k' && e.ctrlKey) {
+                e.preventDefault();
                 setOpen((open) => !open)
             } else if (e.key === 'Escape') {
                 setOpen(false)
