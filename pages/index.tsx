@@ -22,7 +22,10 @@ export default function Home() {
     yMinMax: [-1000, 500],
     // xMinMax: [-1000, 500],
     // zoomMinMax: [0.1, 10],
-    scrollDirection: 'vertical',
+
+    // note that x,y will be reversed when scrollDirection is horizontal
+    // i.e. yMinMax will be the x bounds and xMinMax will be the y bounds
+    scrollDirection: 'horizontal',
   }
 
   return (
