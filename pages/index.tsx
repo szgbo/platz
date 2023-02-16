@@ -17,11 +17,12 @@ export default function Home() {
   // position and zoom values are arbitrary and serve as placeholders
 
   const tzConfig: touchZoomConfig = {
-    yMinMax: [-1000, 500],
-    // xMinMax: [-1000, 500],
-    // zoomMinMax: [0.1, 10],
+    // yMinMax: [-500, 500],
+    // xMinMax: [-200, 200],
+    // zoomMinMax: [0.1, 50],
 
-    scrollDirection: 'horizontal',
+    // scrollDirection: 'horizontal',
+    scrollDirection: 'vertical',
   }
 
   return (
