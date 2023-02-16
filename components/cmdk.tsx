@@ -28,8 +28,8 @@ export default function CommandMenu() {
         }
     }, [])
     return (
-        <div className={'fixed inset-0 justify-center items-center transition-all ' + (open ? 'backdrop-blur-sm bg-white/30 z-[60]' : '-z-[100]')}>
-            <Command.Dialog open={open} onOpenChange={setOpen} label="Command Menu" className={'fixed z-[80] inset-0 block w-[60vw] max-h-[50vh] justify-center m-auto bg-gray-800 p-4 rounded-lg overflow-hidden '}>
+        <div className={'fixed inset-0 justify-center items-center transition-all ' + (open ? 'backdrop-blur-sm bg-white/30 z-[100]' : '-z-[100]')}>
+            <Command.Dialog open={open} onOpenChange={setOpen} label="Command Menu" className={'fixed z-[100] inset-0 block w-[60vw] max-h-[50vh] justify-center m-auto bg-gray-800 p-4 rounded-lg overflow-hidden '}>
                 <Command.Input autoFocus placeholder="Search for posts..." className="absolute border-none w-full text-lg p-5 outline-none text-white border-b-[1px] bg-gray-800 rounded-none m-0 placeholder:text-gray caret-slate-600 h-[15%]" />
                 <Command.List className={'absolute bottom-0 block w-full ml-auto mr-auto overflow-y-scroll h-[80%] overscroll-contain select-none text-base text-white items-center py-2'}>
                     <Command.Empty className='mx-[2%] px-[1%] text-center'>No results found.</Command.Empty>
