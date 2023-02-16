@@ -3,10 +3,8 @@ import InfiniteCanvas from '../components/infiniteCanvas/infiniteCanvas'
 import HomePage from '../components/homeContent'
 import { touchZoomConfig } from '../components/infiniteCanvas/infiniteDiv'
 
-// TODO: add vertical mac doc?
 // TODO: styled components?
 
-// TODO: add min max bound as prop to pass in at page level
 // TODO: add 3 layers abstraction, can just pass in component list into big container?
 // TODO: abstract out components --> more like library the better it is?
 // TODO: grid background + ability to zoom background
@@ -23,8 +21,6 @@ export default function Home() {
     // xMinMax: [-1000, 500],
     // zoomMinMax: [0.1, 10],
 
-    // note that x,y will be reversed when scrollDirection is horizontal
-    // i.e. yMinMax will be the x bounds and xMinMax will be the y bounds
     scrollDirection: 'horizontal',
   }
 
