@@ -7,7 +7,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex">
+    <div className="flex w-screen h-screen justify-center items-center">
       {children}
       <Dock />
       <CommandMenu/>
