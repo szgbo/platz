@@ -101,14 +101,20 @@
       this.#node = node;
       this.#config = config;
       if (config) {
-        MIN_ZOOM = config.minZoom || MIN_ZOOM;
-        MAX_ZOOM = config.maxZoom || MAX_ZOOM;
-        MIN_X = config.minX || MIN_X;
-        MAX_X = config.maxX || MAX_X;
-        MIN_Y = config.minY || MIN_Y;
-        MAX_Y = config.maxY || MAX_Y;
+        if (config.zoomMinMax){
+          MIN_ZOOM = config.zoomMinMax[0];
+          MAX_ZOOM = config.zoomMinMax[1];
+        } 
+        if (config.xMinMax){
+          MIN_X = config.xMinMax[0];
+          MAX_X = config.xMinMax[1];
+        }
+        if (config.yMinMax){
+          MIN_Y = config.yMinMax[0];
+          MAX_Y = config.yMinMax[1];
+        }
         // IS_FINITE is true if any of the config bounds are defined
-        IS_FINITE = !!( config.minX || config.maxX || config.minY || config.maxY );
+        IS_FINITE = !!( config.xMinMax || config.yMinMax );
       }
       this.#scrollingAnchor = getNearestScrollableContainer(node);
       // @ts-ignore
@@ -268,9 +274,9 @@
       const delta = Vec.mul(
         e.shiftKey && !isDarwin()
           ? // shift+scroll = pan horizontally
-          [y, 0]
+            this.#config?.scrollDirection === "horizontal" ? [x, y] : [y, 0]
           : // scroll = pan vertically (or in any direction on a trackpad)
-          [x, y],
+            this.#config?.scrollDirection === "horizontal" ? [y, 0] : [x, y],
         0.5
       );
   

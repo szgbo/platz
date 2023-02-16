@@ -1,12 +1,10 @@
 import React from "react";
 
 export interface touchZoomConfig {
-  minZoom?: number,
-  maxZoom?: number,
-  minX?: number,
-  maxX?: number,
-  minY?: number,
-  maxY?: number,
+  zoomMinMax?: [number, number],
+  yMinMax?: [number, number],
+  xMinMax?: [number, number],
+  scrollDirection?: 'vertical' | 'horizontal',
 }
 export interface infProps {
   pos?: [number, number],
