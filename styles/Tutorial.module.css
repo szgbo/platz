@@ -1,0 +1,22 @@
+.message {
+  width: 750px;
+}
+
+.message h2 {
+  text-align: center;
+}
+
+.terms {
+  width: 550px;
+  text-align: center;
+}
+
+.link {
+  text-align: center;
+}
+
+.link a {
+  color: var(--gray-600);
+  text-decoration: none;
+  pointer-events: all;
+}
