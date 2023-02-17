@@ -193,7 +193,7 @@ export function DockItem({mouseX, iconSrc, pageName, link, doAnimation = true, o
         }}
         onMouseLeave={() => {
           if ((!router.pathname.includes(pageName) && pageName !== "home") 
-                || (pageName === "home" && router.pathname === "/")) {
+                || (pageName === "home" && router.pathname === "")) {
             setIconImgSrc(iconSrc);
           }
         }}
