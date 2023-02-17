@@ -3,7 +3,7 @@
 // import Head from "next/head";
 const Head = require('next/head');
 
-export const title = "How to make a react app";
+export const title = "CMDK lets you index your pages";
 
 export default function post2() {
   return (

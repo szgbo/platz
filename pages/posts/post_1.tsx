@@ -3,7 +3,7 @@
 // import Head from "next/head";
 const Head = require('next/head');
 
-export const title = "How to make a vue app";
+export const title = "PLATZ is awesoooome";
 
 export default function post1() {
   return (
