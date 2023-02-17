@@ -10010,11 +10010,12 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
             const add_point_closure = ([x, y]) =>
               new_cursor_div.style.setProperty(
                 "transform",
-                getTransform(
-                  [x, y],
-                  [getCanvasCenterX(), getCanvasCenterY()],
-                  getCanvasZoom()
-                )
+                `translate(${getCanvasZoom() * (x - getCanvasCenterX())}px, ${getCanvasZoom() * (y - getCanvasCenterY())}px`
+                // getTransform(
+                //   [x, y],
+                //   [getCanvasCenterX(), getCanvasCenterY()],
+                //   getCanvasZoom()
+                // )
               );
             const perfect_cursor = new PerfectCursor(add_point_closure);
             // displayX =

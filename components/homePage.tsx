@@ -43,10 +43,18 @@ const HomePage = ({ x, y, zoom }: Props) => {
       <div
         className="inf-div"
         style={{
-          transform: getTransform([500, 500], [x, y], zoom),
+          transform: getTransform([100, 80], [x, y], zoom),
         }}
       >
-        cursor
+        {`${x.toFixed(0)},${y.toFixed(0)}`}
+      </div>
+      <div
+        className="inf-div"
+        style={{
+          transform: `translate(${zoom * (100 - x)}px, ${zoom * (80 - y)}px`,
+        }}
+      >
+        {`${x.toFixed(0)},${y.toFixed(0)}`}
       </div>
     </>
   );
