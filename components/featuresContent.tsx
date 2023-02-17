@@ -8,9 +8,10 @@ import { type infProps, type posDict, InfDiv, InfClickDiv } from './infiniteCanv
 
 const offsetX = 0
 const pos : posDict = {
+  infiniteCanvas: [offsetX, -250],
   infinteCanvasVideo: [offsetX, -35],
   dockNavigation: [offsetX, 330],
-  sampleDock: [offsetX, 480],
+  sampleDock: [offsetX, 490],
   cursorChat: [offsetX, 600],
   cursorChatVideo: [offsetX, 770],
   cmdk: [offsetX, 1050],
