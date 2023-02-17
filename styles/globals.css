@@ -66,6 +66,11 @@ a {
   pointer-events: all;
 }
 
+a:hover {
+  color: var(--gray-400);
+  cursor: pointer;
+}
+
 /* if dark mode  */
 @media (prefers-color-scheme: dark) {
   :root {
