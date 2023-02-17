@@ -1,7 +1,11 @@
-.features {
-  width: 600px;
+.title {
+  font-weight: 300;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  text-align: center;
 }
 
-.features h2 {
-  margin-bottom: 1rem;
+.sampleDock {
+  width: 100vh;
+  height: 100vh;
 }

@@ -4,7 +4,7 @@ import { useMotionValue } from "framer-motion";
 import cx from 'classnames';
 
 import styles from "../../styles/Dock.module.css";
-import DockItem from "./dockItem";
+import DockItem from "./dockItemSample";
 // list of links and icons
 
 interface dockItems {
@@ -41,7 +41,7 @@ const dockItems: dockItems[] = [
   },
 ]
 
-export function Dock() {
+export function DockSample() {
   // tracks coordinate of mouse in dock
   const dockMouseX = useMotionValue<number | null>(null);
 
@@ -86,4 +86,4 @@ export function Dock() {
   );
 }
 
-export default Dock;
+export default DockSample;

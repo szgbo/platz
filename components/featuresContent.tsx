@@ -1,16 +1,20 @@
 import React, {useState} from 'react';
 import Center from './infiniteCanvas/center';
+import DockSample from './dock/dockSmaple';
 
 import styles from '../styles/Features.module.css'
 
-import { type infProps, type posDict, InfDiv } from './infiniteCanvas/infiniteDiv'
+import { type infProps, type posDict, InfDiv, InfClickDiv } from './infiniteCanvas/infiniteDiv'
 
-const offsetX = -295
+const offsetX = 0
 const pos : posDict = {
-  infiniteCanvas: [offsetX, -150],
-  dockNavigation: [offsetX, 50],
-  cursorChat: [offsetX, 200],
-  cmdk: [offsetX, 350],
+  infiniteCanvas: [offsetX, -200],
+  infinteCanvasVideo: [offsetX, -50],
+  dockNavigation: [offsetX, 250],
+  sampleDock: [offsetX, 0],
+  cursorChat: [offsetX, 500],
+  cursorChatVideo: [offsetX, 650],
+  cmdk: [offsetX, 850],
 }
 
 const FeaturesContent = (props: infProps) => {
@@ -18,52 +22,50 @@ const FeaturesContent = (props: infProps) => {
   return (
     <>
       {/* <Center {...props} /> */}
-      <InfDiv {...props} pos={pos.infiniteCanvas} align='left' >
-        <div className={styles.features}>
-          <h2>
-            infinite canvas
-          </h2>
-          <p>
-            Built for creatives, Platz’s infinite canvas based template frees users from grids 
-            and flex-boxes and empowers them to present their work in a non-linear way. 
-            Moreover, users can worry less about responsive design when the mobile viewing 
-            experience is just organic with dragging and pinching. Our implementation of infinite 
-            canvas is from Eric Zhang’s Dispict Gallery project.
-          </p>
-        </div>
+      <InfDiv {...props} pos={pos.infiniteCanvas} >
+        <h2 className={styles.title}>
+          infinite canvas
+        </h2>
       </InfDiv>
-      <InfDiv {...props} pos={pos.dockNavigation} align='left' >
-        <div className={styles.features}>
-          <h2>
-            dock navigation
-          </h2>
-          <p>
-          Aside from a traditional navigation bar, we have also provided a component that resembles the mac dock. 
-          This gives users an opportunity to differentiate their websites with unique icons that echos the theme 
-          of their work. Our implementation of the mac dock is adapted from Puru Vijay’s macos-web.
-          </p>
-        </div>
+      <InfDiv {...props} pos={pos.infinteCanvasVideo}>
+        <video autoPlay loop muted playsInline
+          src={'/infCanvas.mp4'}
+          width={100} height={300}
+          style={{
+            height: "auto",
+            width: "400px",
+            objectFit: "contain",
+          }}/>
       </InfDiv>
-      <InfDiv {...props} pos={pos.cursorChat} align='left' >
-        <div className={styles.features}>
-          <h2>
-            cursor chat
-          </h2>
-          <p>
-            Built by Jacky Zhao, cursor chat adds a level of playfulness to users’ websites.
-          </p>
-        </div>
+      <InfDiv {...props} pos={pos.dockNavigation} >
+        <h2 className={styles.title}>
+          Dock Navigation
+        </h2>
       </InfDiv>
-      <InfDiv {...props} pos={pos.cmdk} align='left' >
-        <div className={styles.features}>
-          <h2>
-            CMDK
-          </h2>
-          <p>
-            Built by Paco, CMDK can be used to index website and help visitors to
-            quickly search for contents when they are lost.
-          </p>
+      <InfClickDiv {...props} pos={pos.sampleDock} >
+        <div className={styles.sampleDock}>
+          <DockSample />
         </div>
+      </InfClickDiv>
+      <InfDiv {...props} pos={pos.cursorChat} >
+        <h2 className={styles.title}>
+          cursor chat
+        </h2>
+      </InfDiv>
+      <InfDiv {...props} pos={pos.cursorChatVideo} >
+        <video autoPlay loop muted playsInline
+          src={'/cursorChat.mp4'}
+          width={100} height={300}
+          style={{
+            height: "auto",
+            width: "300px",
+            objectFit: "contain",
+          }}/>
+      </InfDiv>
+      <InfDiv {...props} pos={pos.cmdk} >
+        <h2 className={styles.title}>
+          cmdk
+        </h2>
       </InfDiv>
     </>
   )
