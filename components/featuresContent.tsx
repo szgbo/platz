@@ -11,7 +11,7 @@ const pos : posDict = {
   infiniteCanvas: [offsetX, -200],
   infinteCanvasVideo: [offsetX, -50],
   dockNavigation: [offsetX, 250],
-  sampleDock: [offsetX, 0],
+  sampleDock: [offsetX, 430],
   cursorChat: [offsetX, 500],
   cursorChatVideo: [offsetX, 650],
   cmdk: [offsetX, 850],

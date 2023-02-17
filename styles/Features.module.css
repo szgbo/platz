@@ -7,5 +7,5 @@
 
 .sampleDock {
   width: 100vh;
-  height: 100vh;
+  height: max-content;
 }
