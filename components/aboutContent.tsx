@@ -47,7 +47,11 @@ const AboutContent = (props: infProps) => {
           We have adopted code from the following repo and modified/optimized for our own purpose
         </p>
         <div className={styles.creditList}>
-          {credits.map((credit) => (<div key={credit.name}><a href={credit.link} style={{textDecoration: "none", fontWeight: "300"}}>{credit.name}</a></div>))}
+          {credits.map((credit) => (
+              <div key={credit.name}>
+                <a href={credit.link} style={{textDecoration: "none", fontWeight: "300"}} target="_blank" rel="noopener noreferrer">{credit.name}</a>
+              </div>
+            ))}
         </div>
       </InfDiv>
       <InfDiv {...props} pos={pos.adopted} align='left'>
@@ -55,12 +59,19 @@ const AboutContent = (props: infProps) => {
           ADOPTED by
         </h2>
         <div className={styles.adoptedList} style={{marginTop: "-2px"}}>
-          {adoptedBy.map((person) => (<div key={person}><a href={person} style={{textDecoration: "none", fontWeight: "300"}}>{person}</a></div>))}
+          {adoptedBy.map((person) => (
+            <div key={person}>
+              <a href={person} target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", fontWeight: "300"}}>{person}</a>
+            </div>))}
         </div>
       </InfDiv>
       <InfDiv {...props} pos={pos.poweredby} align='center'>
         <div className={styles.adoptedList} style={{marginTop: "-2px"}}>
-          <div style={{textAlign:"center"}}><p style={{textDecoration: "none", fontWeight: "300", fontSize: "0.9rem", lineHeight: "1.2em"}}>ENGINEERED BY L.DALU, W.MARCO, Y.MARCO, Z.SHAOBO <br></br>DESIGNED BY Z.SHAOBO</p></div>
+          <div style={{textAlign:"center"}}>
+              <p style={{textDecoration: "none", fontWeight: "300", fontSize: "0.9rem", lineHeight: "1.2em"}}>
+                ENGINEERED BY L.DALU, W.MARCO, Y.MARCO, Z.SHAOBO <br></br>DESIGNED BY Z.SHAOBO
+              </p>
+          </div>
         </div>
       </InfDiv>
     </>

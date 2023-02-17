@@ -26,7 +26,7 @@ const TutorialContent = (props: infProps) => {
       <InfDiv {...props} pos={pos.terms} align='left'>
         <h6 className={styles.terms}>
           If you are a creative and are interested in creating a website with our features, <br />
-          please <a href={"https://p576j33mzl2.typeform.com/to/C78XvI3z"}>fill out this form</a> and 
+          please <a href={"https://p576j33mzl2.typeform.com/to/C78XvI3z"} target="_blank" rel="noopener noreferrer">fill out this form</a> and 
           we&apos;d love to help / better develop our tutorial system!
         </h6>
       </InfDiv>
