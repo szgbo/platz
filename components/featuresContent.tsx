@@ -15,6 +15,7 @@ const pos : posDict = {
   cursorChat: [offsetX, 600],
   cursorChatVideo: [offsetX, 770],
   cmdk: [offsetX, 1050],
+  cmdkVideo: [offsetX, 1220],
 }
 
 const FeaturesContent = (props: infProps) => {
@@ -66,6 +67,16 @@ const FeaturesContent = (props: infProps) => {
         <h2 className={styles.title}>
           cmdk
         </h2>
+      </InfDiv>
+      <InfDiv {...props} pos={pos.cmdkVideo} >
+        <video autoPlay loop muted playsInline
+          src={'/cmdk.mp4'}
+          width={281} height={500}
+          style={{
+            height: "auto",
+            width: "500px",
+            objectFit: "contain",
+          }}/>
       </InfDiv>
     </>
   )
