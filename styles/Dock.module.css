@@ -172,6 +172,7 @@
   letter-spacing: 0.4px;
   display: none;
   width: fit-content;
+  text-transform: uppercase;
 }
 
 .dock-item-tooltip-left {
