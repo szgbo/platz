@@ -9,12 +9,12 @@ import { type infProps, type posDict, InfDiv, InfClickDiv } from './infiniteCanv
 const offsetX = 0
 const pos : posDict = {
   infiniteCanvas: [offsetX, -200],
-  infinteCanvasVideo: [offsetX, -50],
-  dockNavigation: [offsetX, 250],
+  infinteCanvasVideo: [offsetX, -35],
+  dockNavigation: [offsetX, 330],
   sampleDock: [offsetX, 0],
-  cursorChat: [offsetX, 500],
-  cursorChatVideo: [offsetX, 650],
-  cmdk: [offsetX, 850],
+  cursorChat: [offsetX, 600],
+  cursorChatVideo: [offsetX, 770],
+  cmdk: [offsetX, 1050],
 }
 
 const FeaturesContent = (props: infProps) => {
@@ -30,10 +30,10 @@ const FeaturesContent = (props: infProps) => {
       <InfDiv {...props} pos={pos.infinteCanvasVideo}>
         <video autoPlay loop muted playsInline
           src={'/infCanvas.mp4'}
-          width={100} height={300}
+          width={281} height={500}
           style={{
             height: "auto",
-            width: "400px",
+            width: "500px",
             objectFit: "contain",
           }}/>
       </InfDiv>
@@ -55,10 +55,10 @@ const FeaturesContent = (props: infProps) => {
       <InfDiv {...props} pos={pos.cursorChatVideo} >
         <video autoPlay loop muted playsInline
           src={'/cursorChat.mp4'}
-          width={100} height={300}
+          width={281} height={500}
           style={{
             height: "auto",
-            width: "300px",
+            width: "500px",
             objectFit: "contain",
           }}/>
       </InfDiv>
