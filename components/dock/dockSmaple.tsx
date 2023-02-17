@@ -15,27 +15,27 @@ interface dockItems {
 
 const dockItems: dockItems[] = [
   {
-    name: 'home',
+    name: 'PLATZ',
     iconSrc: 'P_icon',
     href: '/',
   },
   {
-    name: 'features',
+    name: 'LATZP',
     iconSrc: 'L_icon',
     href: '/features',
   },
   {
-    name: 'tutorial',
+    name: 'ATZPL',
     iconSrc: 'A_icon',
     href: '/tutorial',
   },
   {
-    name: 'about',
+    name: 'TZPLA',
     iconSrc: 'T_icon',
     href: '/about',
   },
   {
-    name: 'github',
+    name: 'ZPLAT',
     iconSrc: 'Z_icon',
     href: 'https://github.com/hellsegga-platz/platz',
   },
