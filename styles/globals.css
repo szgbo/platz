@@ -39,7 +39,7 @@ h2 {
 h3 {
   font-family: var(--sf-pro-display);
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 300;
   color: var(--gray-600);
 }
 
@@ -55,6 +55,15 @@ p {
   font-size: 1rem;
   font-weight: 400;
   color: var(--gray-600);
+}
+
+a {
+  color: var(--gray-600);
+  text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 4px;
+  font-weight: 500;
+  pointer-events: all;
 }
 
 /* if dark mode  */

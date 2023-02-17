@@ -5,7 +5,7 @@ import styles from '../styles/Tutorial.module.css'
 
 import { type infProps, type posDict, InfDiv, InfClickDiv } from './infiniteCanvas/infiniteDiv'
 
-const offsetX = -375;
+const offsetX = -350;
 const pos : posDict = {
   message: [offsetX, -50],
   terms: [offsetX, 30],

@@ -1,5 +1,5 @@
 .message {
-  width: 750px;
+  width: 700px;
   font-weight: 400;
   font-size: 2.1em;
   line-height: 1.1em;
@@ -7,8 +7,9 @@
 
 .terms {
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1.1em;
+  letter-spacing: 0.9px;
 }
 
 .terms a {
