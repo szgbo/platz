@@ -5,9 +5,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import type { RefObject } from "react";
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { useRaf } from 'rooks';
 import { motion, useMotionValue, useSpring, useAnimation, MotionValue, useTransform } from "framer-motion";
+import CustomLink from "./customLink";
 import cx from 'classnames';
 
 import styles from "../../styles/Dock.module.css";
@@ -91,11 +91,12 @@ interface Props {
   mouseX: MotionValue | null;
   iconSrc: string;
   pageName: string;
+  link: string;
   direction: 'left' | 'right' | 'bottom' ;
   doAnimation?: boolean;
   overlaySrc?: string;
 }
-export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlaySrc, direction}: Props) {
+export function DockItem({mouseX, iconSrc, pageName, link, doAnimation = true, overlaySrc, direction='bottom'}: Props) {
 
   function setIconImgSrc(src: string | undefined) {
     const iconImg = document.querySelector('#' + pageName);
@@ -129,10 +130,8 @@ export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlay
     }
   }, []);
 
-  let link: string = pageName === "home" ? "/" : "/" + pageName;
   const imgRef = useRef<HTMLImageElement>(null);
   let { width } = useDockHoverAnimation(mouseX, imgRef, direction);
-  
 
   const iconTitle = pageName;
 
@@ -164,64 +163,65 @@ export function DockItem({mouseX, iconSrc, pageName, doAnimation = true, overlay
 
   return (
     //  use link instead of <a> for faster page transitions
-    <Link 
-      href={link} 
-      onClick={bounceEffect} 
-      aria-label={iconTitle} 
-      className={cx(
-        styles["dock-item-container"],
-        styles[`dock-item-container-${direction}`]
-      )}
-    >
-    {/* <!-- label tag for text ontop --> */}
-    <motion.p
-      animate={controls}
-      className={cx(
-        styles["dock-item-tooltip"],
-        styles[`dock-item-tooltip-${direction}`]
-      )}
-    >
-      {iconTitle}
-    </motion.p>
-    <motion.span 
-      style={{ 
-        // width: `${widthPX.get() / 16}rem`,
-        width: doAnimation? width : undefined,
-        willChange: "width",
-      }}
-      onMouseEnter={() => {
-        setIconImgSrc(overlaySrc);
-      }}
-      onMouseLeave={() => {
-        if (!router.pathname.includes(pageName) && pageName !== "home") {
-          setIconImgSrc(iconSrc);
-        }
-      }}
-      // ref={imgRef}
-    >
-      {/* <!-- img tag for the icon --> */}
-        <motion.img
-          animate={controls} 
-          id={pageName}
-          ref={imgRef}
-          className={styles["dock-item-img"]}
-          src={iconSrc}
-          alt={iconTitle}
-          style={{ 
-            // width: `${widthPX.get() / 16}rem`,
-            width: doAnimation? width : undefined,
-            willChange: "width",
-          }}
-          draggable="false"
-        />
-    </motion.span>
-    {/* <!-- dot opacity depends on if app is open or not, open apps in global state -->
-    <!-- sets the opacity state according to if app is open --> 
-    <!-- + sign converts the variable to an integer (javascript unary plus) --> */}
-    <div className={styles["dot"]} style={{
-      opacity: dotOpacity,
-    }} />
-  </Link>
+    <CustomLink href={link}>
+      <div
+        onClick={bounceEffect} 
+        aria-label={iconTitle} 
+        className={cx(
+          styles["dock-item-container"],
+          styles[`dock-item-container-${direction}`]
+        )}
+      >
+      {/* <!-- label tag for text ontop --> */}
+      <motion.p
+        animate={controls}
+        className={cx(
+          styles["dock-item-tooltip"],
+          styles[`dock-item-tooltip-${direction}`]
+        )}
+      >
+        {iconTitle}
+      </motion.p>
+      <motion.span 
+        style={{ 
+          // width: `${widthPX.get() / 16}rem`,
+          width: doAnimation? width : undefined,
+          willChange: "width",
+        }}
+        onMouseEnter={() => {
+          setIconImgSrc(overlaySrc);
+        }}
+        onMouseLeave={() => {
+          if (!router.pathname.includes(pageName) && pageName !== "home") {
+            setIconImgSrc(iconSrc);
+          }
+        }}
+        // ref={imgRef}
+      >
+        {/* <!-- img tag for the icon --> */}
+          <motion.img
+            animate={controls} 
+            id={pageName}
+            ref={imgRef}
+            className={styles["dock-item-img"]}
+            src={iconSrc}
+            alt={iconTitle}
+            style={{ 
+              // width: `${widthPX.get() / 16}rem`,
+              width: doAnimation? width : undefined,
+              willChange: "width",
+            }}
+            draggable="false"
+          />
+      </motion.span>
+      {/* <!-- dot opacity depends on if app is open or not, open apps in global state -->
+      <!-- sets the opacity state according to if app is open --> 
+      <!-- + sign converts the variable to an integer (javascript unary plus) --> */}
+      <div className={styles["dot"]} style={{
+        opacity: dotOpacity,
+      }} />
+    </div>
+  </CustomLink>
   );
 }
 
