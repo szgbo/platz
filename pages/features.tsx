@@ -8,6 +8,8 @@ import FeaturesContent from '../components/featuresContent'
 
 import { type posDict } from '../components/infiniteCanvas/infiniteDiv'
 
+export const title = "Explore Features";
+
 const offsetX = -295
 const pos : posDict = {
   infiniteCanvas: [offsetX, -150],

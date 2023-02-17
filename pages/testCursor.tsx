@@ -7,6 +7,8 @@ import { initCursorChat } from 'cursor-chat'
 // import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
 
+export const title='this is a test page'
+
 const TestCursor: NextPage = () => {
 
   useEffect(() => {

@@ -5,9 +5,19 @@ export default function CommandMenu() {
     const fileNames = process.env.cmdk
 
     const fileNamesArray = JSON.parse(JSON.stringify(fileNames))
+    // console.log(fileNamesArray)
 
-    const allPosts = fileNamesArray.map((post: any) => {
-        const component = require(`../pages/posts/${post}`)
+    const allPosts = fileNamesArray.map((post: String) => {
+        // const component = require(`../pages/posts/${post}`)
+        if (post.startsWith('_') || !post.endsWith('tsx')) return
+        if (post === '/') {
+            const component = require(`../pages/index.tsx`)
+            return {
+                link: '',
+                title: component.title,
+            }
+        }
+        const component = require(`../pages/${post}`)
         return {
             link: post.replace('.tsx', ''),
             title: component.title,
@@ -35,14 +45,17 @@ export default function CommandMenu() {
                 <Command.List className={'border-t-[0px] border-neutral-700 pt-0 mt-1 absolute top-12 block w-full ml-auto mr-auto overflow-y-scroll h-[85%] overscroll-contain select-none text-base text-white items-center py-2 scrollbar-none scrollbar-thumb-neutral-300 scrollbar-track-neutral-200'}>
                     <Command.Empty className='mx-[2%] px-[1%] py-4 text-center font-sans'>No results found.</Command.Empty>
                     {/* create an item for every post */}
-                    {allPosts.map((post: any) => (
+                    {allPosts.map((post: any) => {
+                        if (!post) return
+                        return (
+                            // todo: make not route to outside?
                         <Command.Item
                             key={post.link}
                             className='font-sans z-[99] px-[2%] h-12 flex items-center gap-3 py-4 text-neutral-600 select-none transition-all duration-150 ease-in-out relative border-l-4 border-transparent aria-selected:bg-neutral-200/30 aria-selected:border-neutral-200/30 hover:cursor-pointer'
-                            onSelect={() => window.location.href = `/posts/${post.link}`}>
+                            onSelect={() => window.location.href = `/${post.link}`}>
                             {post.title}
                         </Command.Item>
-                    ))}
+                    )})}
 
                 </Command.List>
             </Command.Dialog>

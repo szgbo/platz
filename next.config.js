@@ -19,7 +19,7 @@ module.exports = (phase, { defaultConfig }) => {
   return {
     ...nextConfig,
     env: {
-      cmdk: getPosts.getPosts(),
+      cmdk: getPosts.getRootPages(),
     }
   };
 }
