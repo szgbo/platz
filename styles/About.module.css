@@ -1,0 +1,58 @@
+.title{
+  text-transform: uppercase;
+}
+
+.titleAnnoying{
+  text-transform: none;
+}
+
+.overview {
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.1em;
+  width: 750px;
+}
+
+.smallText{
+  font-size: 0.8em;
+  font-weight: 200;
+}
+
+.creditList {
+  margin-top: 0.8em;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1em;
+}
+
+.creditList a{
+  pointer-events: all;
+}
+
+.creditList a:hover{
+  cursor: pointer;
+  color: var(--gray-400);
+}
+
+.adoptedList {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.2em;
+}
+
+.adoptedList a{
+  pointer-events: all;
+}
+
+.adoptedList a:hover{
+  cursor: pointer;
+  color: var(--gray-400);
+}
+
+
+
+
+/* .poweredBy{
+
+} */
