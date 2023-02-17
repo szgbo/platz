@@ -62,6 +62,7 @@
   background-image: url('../public/dock-bg.svg');
   background-position: 0% 60%;
   background-repeat: no-repeat;
+  user-select: none;
 }
 
 .dock-el ::before:not(.overlay) {
@@ -141,7 +142,6 @@
   justify-content: flex-end;
   flex-direction: row;
   align-items: center;
-
 }
 
 .dock-item-container-bottom {
