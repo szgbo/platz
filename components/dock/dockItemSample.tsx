@@ -107,28 +107,8 @@ export function DockItem({mouseX, iconSrc, pageName, link, doAnimation = true, o
 
   const router = useRouter();
   // change dot adn overlay on page reload
-  useEffect(() => {
-    if (router.pathname.includes(pageName) && pageName !== "home") {
-      setDotOpacity(1);
-      setIconImgSrc(overlaySrc);
-    } else if (pageName === "home" && router.pathname === "/") {
-        setDotOpacity(1);
-        setIconImgSrc(overlaySrc);
-    } else {
-      setDotOpacity(0);
-      setIconImgSrc(iconSrc);
-    }
-  }, [router.pathname])
   
   const [dotOpacity, setDotOpacity] = useState<number>(0);
-  useEffect(() => {
-    // imageEl = document.getElementById("dockItem-icon") as HTMLElement;
-    if (router.pathname.includes(pageName) && pageName !== "home") {
-      setDotOpacity(1);
-    } else if (pageName === "home" && router.pathname === "/") {
-        setDotOpacity(1);
-    }
-  }, []);
 
   const imgRef = useRef<HTMLImageElement>(null);
   let { width } = useDockHoverAnimation(mouseX, imgRef, direction);
@@ -191,9 +171,7 @@ export function DockItem({mouseX, iconSrc, pageName, link, doAnimation = true, o
         setIconImgSrc(overlaySrc);
       }}
       onMouseLeave={() => {
-        if (!router.pathname.includes(pageName) && pageName !== "home") {
-          setIconImgSrc(iconSrc);
-        }
+        setIconImgSrc(iconSrc);
       }}
       // ref={imgRef}
     >

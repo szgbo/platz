@@ -124,9 +124,14 @@ export function DockItem({mouseX, iconSrc, pageName, link, doAnimation = true, o
   useEffect(() => {
     // imageEl = document.getElementById("dockItem-icon") as HTMLElement;
     if (router.pathname.includes(pageName) && pageName !== "home") {
+      setIconImgSrc(overlaySrc);
       setDotOpacity(1);
     } else if (pageName === "home" && router.pathname === "/") {
+      setIconImgSrc(overlaySrc);
         setDotOpacity(1);
+    } else {
+      setDotOpacity(0);
+      setIconImgSrc(iconSrc);
     }
   }, []);
 
