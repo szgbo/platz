@@ -36,7 +36,7 @@ const AboutContent = (props: infProps) => {
         </h2>
         <p className={styles.overview} style={{marginTop: "-7px"}}>
           Platz&apos;s infinite canvas based template empowers creatives to present their work
-          in its most natural form. 
+          in its most natural form.
         </p>
       </InfDiv>
       <InfDiv {...props} pos={pos.credit} align='left'>
@@ -61,7 +61,7 @@ const AboutContent = (props: infProps) => {
         <div className={styles.adoptedList} style={{marginTop: "-2px"}}>
           {adoptedBy.map((person) => (
             <div key={person}>
-              <a href={person} target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", fontWeight: "300"}}>{person}</a>
+              <a href={`https://${person}`} target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", fontWeight: "300"}}>{person}</a>
             </div>))}
         </div>
       </InfDiv>
