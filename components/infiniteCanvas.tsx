@@ -91,9 +91,10 @@ const InfiniteCanvas = <P extends Props>(
     return (
       <div className="infinite-container">
         <div className="infinite-canvas" id={ID}>
-          <div className="inf-div" id="cursor-chat-layer">
+          <div id="cursor-chat-box"></div>
+          {/* <div className="inf-div" id="cursor-chat-layer">
             <div id="cursor-chat-box"></div>
-          </div>
+          </div> */}
           <div
             className="inf-click-div"
             style={{

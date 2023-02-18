@@ -9937,11 +9937,21 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
       const canvasCenterX = window.innerWidth / 2;
       const canvasCenterY = window.innerHeight / 2;
       const mouseXRelativeToInfiniteCanvas =
-        (1 / zoom) * (evt.pageX - canvasCenterX + getCanvasCenterX());
+        (1 / zoom) * (evt.pageX - canvasCenterX) + getCanvasCenterX();
       const mouseYRelativeToInfiniteCanvas =
-        (1 / zoom) * (evt.pageY - canvasCenterY + getCanvasCenterY());
+        (1 / zoom) * (evt.pageY - canvasCenterY) + getCanvasCenterY();
       
       // console.log(getCanvasCenterX(), getCanvasCenterY())
+      // console.log("event:", evt.pageX, evt.pageY);
+      // console.log("zoom:", zoom);
+      // console.log("canvas:", canvasCenterX, canvasCenterY);
+      console.log(
+        "cursor:",
+        (evt.pageX - canvasCenterX).toFixed(0),
+        (evt.pageY - canvasCenterY).toFixed(0)
+      );
+
+      console.log("canvasCenter:", getCanvasCenterX(), getCanvasCenterY());
       console.log(
         mouseXRelativeToInfiniteCanvas,
         mouseYRelativeToInfiniteCanvas
@@ -9949,7 +9959,14 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
 
       me.x = mouseXRelativeToInfiniteCanvas;
       me.y = mouseYRelativeToInfiniteCanvas;
-      // chatDiv.style.setProperty("transform", `translate(${me.x}px, ${me.y}px)`);
+
+
+      chatDiv.style.setProperty(
+        "transform",
+        `translate(${zoom * (me.x - getCanvasCenterX())}px, ${
+          zoom * (me.y - getCanvasCenterY())
+        }px)`
+      );
     }
   };
   document.addEventListener("keydown", (event) => {
