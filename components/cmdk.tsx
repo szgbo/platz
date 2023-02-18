@@ -5,9 +5,19 @@ export default function CommandMenu() {
     const fileNames = process.env.cmdk
 
     const fileNamesArray = JSON.parse(JSON.stringify(fileNames))
+    // console.log(fileNamesArray)
 
-    const allPosts = fileNamesArray.map((post: any) => {
-        const component = require(`../pages/posts/${post}`)
+    const allPosts = fileNamesArray.map((post: String) => {
+        // const component = require(`../pages/posts/${post}`)
+        if (post.startsWith('_') || !post.endsWith('tsx')) return
+        if (post === '/') {
+            const component = require(`../pages/index.tsx`)
+            return {
+                link: '',
+                title: component.title,
+            }
+        }
+        const component = require(`../pages/${post}`)
         return {
             link: post.replace('.tsx', ''),
             title: component.title,
@@ -29,20 +39,23 @@ export default function CommandMenu() {
         }
     }, [])
     return (
-        <div className={'fixed inset-0 justify-center items-center transition-all ' + (open ? 'backdrop-blur-sm bg-white/30 z-[100]' : '-z-[100]')}>
-            <Command.Dialog open={open} onOpenChange={setOpen} label="Command Menu" className={'fixed z-[100] inset-0 block w-[60vw] max-h-[50vh] justify-center m-auto bg-gray-800 p-4 rounded-lg overflow-hidden '}>
-                <Command.Input autoFocus placeholder="Search for posts..." className="absolute border-none w-full text-lg p-5 outline-none text-white border-b-[1px] bg-gray-800 rounded-none m-0 placeholder:text-gray caret-slate-600 h-[15%]" />
-                <Command.List className={'absolute bottom-0 block w-full ml-auto mr-auto overflow-y-scroll h-[80%] overscroll-contain select-none text-base text-white items-center py-2'}>
-                    <Command.Empty className='mx-[2%] px-[1%] text-center'>No results found.</Command.Empty>
+        <div className={'fixed inset-0 justify-center items-center ' + (open ? 'backdrop-blur-sm bg-neutral-200/30 z-[100]' : '-z-[100]')}>
+            <Command.Dialog open={open} onOpenChange={setOpen} label="Command Menu" className={'fixed z-[100] inset-0 block w-[640px] max-w-[90vw] min-h-[300px] max-h-[40vh] justify-center m-auto bg-neutral-50 p-0 rounded-md overflow-hidden'}>
+                <Command.Input autoFocus placeholder="Search for posts..." className="absolute w-full text-lg px-4 py-3 outline-none text-neutral-600 bg-neutral-200/30 rounded-none m-0 placeholder:text-gray caret-slate-300" />
+                <Command.List className={'border-t-[0px] border-neutral-700 pt-0 mt-1 absolute top-12 block w-full ml-auto mr-auto overflow-y-scroll h-[85%] overscroll-contain select-none text-base text-white items-center py-2 scrollbar-none scrollbar-thumb-neutral-300 scrollbar-track-neutral-200'}>
+                    <Command.Empty className='mx-[2%] px-[1%] py-4 text-center font-sans'>No results found.</Command.Empty>
                     {/* create an item for every post */}
-                    {allPosts.map((post: any) => (
+                    {allPosts.map((post: any) => {
+                        if (!post) return
+                        return (
+                            // todo: make not route to outside?
                         <Command.Item
-                        key={post.link}
-                        className='mx-[2%] px-[1%] rounded-lg h-12 text-lg flex items-center gap-3 py-4 text-white select-none transition-all duration-150 ease-in-out relative aria-selected:bg-slate-500 hover:cursor-pointer'
-                        onSelect={() => window.location.href = `/posts/${post.link}`}>
-                                {post.title}
+                            key={post.link}
+                            className='font-sans z-[99] px-[2%] h-12 flex items-center gap-3 py-4 text-neutral-600 select-none transition-all duration-150 ease-in-out relative border-l-4 border-transparent aria-selected:bg-neutral-200/30 aria-selected:border-neutral-200/30 hover:cursor-pointer'
+                            onSelect={() => window.location.href = `/${post.link}`}>
+                            {post.title}
                         </Command.Item>
-                    ))}
+                    )})}
 
                 </Command.List>
             </Command.Dialog>

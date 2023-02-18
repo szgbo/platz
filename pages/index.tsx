@@ -9,7 +9,7 @@ import { touchZoomConfig } from '../components/infiniteCanvas/infiniteDiv'
 // TODO: abstract out components --> more like library the better it is?
 // TODO: grid background + ability to zoom background
 
-
+export const title = "Return to Home";
 
 export default function Home() {
   // infinite canvas is a higher order component that takes a component as an argument

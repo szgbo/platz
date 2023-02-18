@@ -1,22 +1,27 @@
 .message {
-  width: 750px;
-}
-
-.message h2 {
-  text-align: center;
+  width: 700px;
+  font-weight: 400;
+  font-size: 2.1em;
+  line-height: 1.1em;
 }
 
 .terms {
-  width: 550px;
-  text-align: center;
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.1em;
+  letter-spacing: 0.9px;
 }
 
-.link {
-  text-align: center;
-}
-
-.link a {
+.terms a {
   color: var(--gray-600);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 3px;
+  font-weight: 500;
   pointer-events: all;
+}
+
+.terms a:hover {
+  color:var(--gray-400);
+  cursor: pointer;
 }

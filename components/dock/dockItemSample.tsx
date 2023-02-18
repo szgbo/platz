@@ -107,27 +107,8 @@ export function DockItem({mouseX, iconSrc, pageName, link, doAnimation = true, o
 
   const router = useRouter();
   // change dot adn overlay on page reload
-  useEffect(() => {
-    if (router.pathname === link) {
-      setDotOpacity(1);
-      setIconImgSrc(overlaySrc);
-    } else {
-      setDotOpacity(0);
-      setIconImgSrc(iconSrc);
-    }
-  }, [router.pathname])
   
   const [dotOpacity, setDotOpacity] = useState<number>(0);
-  useEffect(() => {
-    // imageEl = document.getElementById("dockItem-icon") as HTMLElement;
-    if (router.pathname === link) {
-      setIconImgSrc(overlaySrc);
-      setDotOpacity(1);
-    } else {
-      setDotOpacity(0);
-      setIconImgSrc(iconSrc);
-    }
-  }, []);
 
   const imgRef = useRef<HTMLImageElement>(null);
   let { width } = useDockHoverAnimation(mouseX, imgRef, direction);
@@ -162,65 +143,61 @@ export function DockItem({mouseX, iconSrc, pageName, link, doAnimation = true, o
 
   return (
     //  use link instead of <a> for faster page transitions
-    <CustomLink href={link}>
-      <div
-        onClick={bounceEffect} 
-        aria-label={iconTitle} 
-        className={cx(
-          styles["dock-item-container"],
-          styles[`dock-item-container-${direction}`]
-        )}
-      >
-      {/* <!-- label tag for text ontop --> */}
-      <motion.p
-        animate={controls}
-        className={cx(
-          styles["dock-item-tooltip"],
-          styles[`dock-item-tooltip-${direction}`]
-        )}
-      >
-        {iconTitle}
-      </motion.p>
-      <motion.span 
-        style={{ 
-          // width: `${widthPX.get() / 16}rem`,
-          width: doAnimation? width : undefined,
-          willChange: "width",
-        }}
-        onMouseEnter={() => {
-          setIconImgSrc(overlaySrc);
-        }}
-        onMouseLeave={() => {
-          if (router.pathname !== link) {
-            setIconImgSrc(iconSrc);
-          }
-        }}
-        // ref={imgRef}
-      >
-        {/* <!-- img tag for the icon --> */}
-          <motion.img
-            animate={controls} 
-            id={pageName}
-            ref={imgRef}
-            className={styles["dock-item-img"]}
-            src={iconSrc}
-            alt={iconTitle}
-            style={{ 
-              // width: `${widthPX.get() / 16}rem`,
-              width: doAnimation? width : undefined,
-              willChange: "width",
-            }}
-            draggable="false"
-          />
-      </motion.span>
-      {/* <!-- dot opacity depends on if app is open or not, open apps in global state -->
-      <!-- sets the opacity state according to if app is open --> 
-      <!-- + sign converts the variable to an integer (javascript unary plus) --> */}
-      <div className={styles["dot"]} style={{
-        opacity: dotOpacity,
-      }} />
-    </div>
-  </CustomLink>
+    <div
+      onClick={bounceEffect} 
+      aria-label={iconTitle} 
+      className={cx(
+        styles["dock-item-container"],
+        styles[`dock-item-container-${direction}`]
+      )}
+    >
+    {/* <!-- label tag for text ontop --> */}
+    <motion.p
+      animate={controls}
+      className={cx(
+        styles["dock-item-tooltip"],
+        styles[`dock-item-tooltip-${direction}`]
+      )}
+    >
+      {iconTitle}
+    </motion.p>
+    <motion.span 
+      style={{ 
+        // width: `${widthPX.get() / 16}rem`,
+        width: doAnimation? width : undefined,
+        willChange: "width",
+      }}
+      onMouseEnter={() => {
+        setIconImgSrc(overlaySrc);
+      }}
+      onMouseLeave={() => {
+        setIconImgSrc(iconSrc);
+      }}
+      // ref={imgRef}
+    >
+      {/* <!-- img tag for the icon --> */}
+        <motion.img
+          animate={controls} 
+          id={pageName}
+          ref={imgRef}
+          className={styles["dock-item-img"]}
+          src={iconSrc}
+          alt={iconTitle}
+          style={{ 
+            // width: `${widthPX.get() / 16}rem`,
+            width: doAnimation? width : undefined,
+            willChange: "width",
+          }}
+          draggable="false"
+        />
+    </motion.span>
+    {/* <!-- dot opacity depends on if app is open or not, open apps in global state -->
+    <!-- sets the opacity state according to if app is open --> 
+    <!-- + sign converts the variable to an integer (javascript unary plus) --> */}
+    <div className={styles["dot"]} style={{
+      opacity: dotOpacity,
+    }} />
+  </div>
   );
 }
 

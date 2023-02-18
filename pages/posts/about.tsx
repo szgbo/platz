@@ -4,7 +4,7 @@
 
 const Head = require('next/head');
 
-export const title = 'About me';
+export const title = 'This is a demo of CMDK on PLATZ';
 
 export default function AboutPage() {
   return (

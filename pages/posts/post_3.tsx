@@ -3,7 +3,7 @@
 // import Head from "next/head";
 const Head = require('next/head');
 
-export const title = "who knows";
+export const title = "This helps visitors to quickly navigate your website";
 
 export default function post1() {
   return (

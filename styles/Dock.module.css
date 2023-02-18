@@ -32,7 +32,6 @@
 }
 
 
-
 /* FIXME: change later for vertical */
 @media (min-width: 768px) {
   .dock {
@@ -62,6 +61,7 @@
   background-image: url('../public/dock-bg.svg');
   background-position: 0% 60%;
   background-repeat: no-repeat;
+  user-select: none;
 }
 
 .dock-el ::before:not(.overlay) {
@@ -141,7 +141,6 @@
   justify-content: flex-end;
   flex-direction: row;
   align-items: center;
-
 }
 
 .dock-item-container-bottom {
@@ -172,6 +171,7 @@
   letter-spacing: 0.4px;
   display: none;
   width: fit-content;
+  text-transform: uppercase;
 }
 
 .dock-item-tooltip-left {

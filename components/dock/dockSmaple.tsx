@@ -4,7 +4,7 @@ import { useMotionValue } from "framer-motion";
 import cx from 'classnames';
 
 import styles from "../../styles/Dock.module.css";
-import DockItem from "./dockItem";
+import DockItem from "./dockItemSample";
 // list of links and icons
 
 interface dockItems {
@@ -15,33 +15,33 @@ interface dockItems {
 
 const dockItems: dockItems[] = [
   {
-    name: 'home',
+    name: 'PLATZ',
     iconSrc: 'P_icon',
     href: '/',
   },
   {
-    name: 'features',
+    name: 'LATZP',
     iconSrc: 'L_icon',
     href: '/features',
   },
   {
-    name: 'tutorial',
+    name: 'ATZPL',
     iconSrc: 'A_icon',
     href: '/tutorial',
   },
   {
-    name: 'about',
+    name: 'TZPLA',
     iconSrc: 'T_icon',
     href: '/about',
   },
   {
-    name: 'github',
+    name: 'ZPLAT',
     iconSrc: 'Z_icon',
     href: 'https://github.com/hellsegga-platz/platz',
   },
 ]
 
-export function Dock() {
+export function DockSample() {
   // tracks coordinate of mouse in dock
   const dockMouseX = useMotionValue<number | null>(null);
 
@@ -86,4 +86,4 @@ export function Dock() {
   );
 }
 
-export default Dock;
+export default DockSample;
