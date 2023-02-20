@@ -9960,8 +9960,15 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
       me.x = mouseXRelativeToInfiniteCanvas;
       me.y = mouseYRelativeToInfiniteCanvas;
 
+      // chatDiv.style.setProperty(
+      //   "transform",
+      //   `translate(${zoom * (me.x - getCanvasCenterX())}px, ${
+      //     zoom * (me.y - getCanvasCenterY())
+      //   }px)`
+      // );
 
-      chatDiv.style.setProperty(
+      const chatBoxDisplayDiv = document.getElementById("chat-box-display-div");
+      chatBoxDisplayDiv.style.setProperty(
         "transform",
         `translate(${zoom * (me.x - getCanvasCenterX())}px, ${
           zoom * (me.y - getCanvasCenterY())

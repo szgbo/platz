@@ -91,7 +91,9 @@ const InfiniteCanvas = <P extends Props>(
     return (
       <div className="infinite-container">
         <div className="infinite-canvas" id={ID}>
-          <input type="text" id="cursor-chat-box" />
+          <div id={"chat-box-display-div"}>
+            <input type="text" id="cursor-chat-box" />
+          </div>
           {/* <div className="inf-div" id="cursor-chat-layer">
             <div id="cursor-chat-box"></div>
           </div> */}

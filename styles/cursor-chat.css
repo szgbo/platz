@@ -95,9 +95,9 @@
   border-radius: 0 20px 20px;
   border: 2px solid #00000011;
   box-shadow: 7px 15px 36px 4px #0000001a;
-  max-width: 250px;
+  /* max-width: 250px; */
   font-family: sans-serif;
-  overflow-wrap: anywhere;
+  /* overflow-wrap: anywhere; */
   font-size: 1rem;
   min-height: calc(1rem + 4px)
 }
