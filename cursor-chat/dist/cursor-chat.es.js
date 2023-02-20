@@ -9882,12 +9882,13 @@ const getTransform = (pos, center, zoom) => {
       ${pos[1] - center[1]}px
     )`;
   }
-const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZoom, triggerKey = "/", cursorDivId = "cursor-chat-layer", chatDivId = "cursor-chat-box") => {
+const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZoom, triggerKey = "/", cursorDivId = "cursor-chat-layer", chatBoxDivId = "cursor-chat-box", chatBoxInputId = "cursor-chat-box-input") => {
   // const cursorDiv = document.getElementById(cursorDivId);
   // Set cursorDiv to be the infinite canvas div
-  const cursorDiv = document.getElementById("frame")
-  const chatDiv = document.getElementById(chatDivId);
-  if (!cursorDiv || !chatDiv) {
+  const cursorDiv = document.getElementById(cursorDivId)
+  const chatBoxDiv = document.getElementById(chatBoxDivId);
+  const chatBoxInput = document.getElementById(chatBoxInputId);
+  if (!cursorDiv || !chatBoxDiv || !chatBoxInput) {
     throw `Couldn't find cursor-chat-related divs! Make sure DOM content is fully loaded before initializing`;
   }
   console.log("Try establish")
@@ -9967,8 +9968,8 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
       //   }px)`
       // );
 
-      const chatBoxDisplayDiv = document.getElementById("chat-box-display-div");
-      chatBoxDisplayDiv.style.setProperty(
+      // const chatBoxDisplayDiv = document.getElementById("chat-box-display-div");
+      chatBoxDiv.style.setProperty(
         "transform",
         `translate(${zoom * (me.x - getCanvasCenterX())}px, ${
           zoom * (me.y - getCanvasCenterY())
@@ -9978,24 +9979,24 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
   };
   document.addEventListener("keydown", (event) => {
     if (event.key === triggerKey) {
-      if (chatDiv.style.getPropertyValue("display") === "block" && chatDiv.value === "") {
+      if (chatBoxInput.style.getPropertyValue("display") === "block" && chatBoxInput.value === "") {
         event.preventDefault();
-        chatDiv.style.setProperty("display", "none");
+        chatBoxInput.style.setProperty("display", "none");
       } else {
         event.preventDefault();
-        chatDiv.style.setProperty("display", "block");
-        chatDiv.focus();
+        chatBoxInput.style.setProperty("display", "block");
+        chatBoxInput.focus();
       }
     } else if (event.key === "Escape") {
       event.preventDefault();
-      chatDiv.value = "";
-      chatDiv.style.setProperty("display", "none");
+      chatBoxInput.value = "";
+      chatBoxInput.style.setProperty("display", "none");
     } else if (event.key === "Enter") {
       event.preventDefault();
     }
   });
   document.addEventListener("keyup", () => {
-    me.chat = chatDiv.value;
+    me.chat = chatBoxInput.value;
     sendUpdate = true;
   });
   const cursor_interp = /* @__PURE__ */ new Map();

@@ -29,6 +29,7 @@ const InfiniteCanvas = <P extends Props>(
     yRef.current = y;
 
     const ID = "frame";
+    const triggerKey = "/";
 
     useEffect(() => {
       let cleanup: () => void;
@@ -42,7 +43,9 @@ const InfiniteCanvas = <P extends Props>(
           "platz_cursor_chat_room_infinite_canvas",
           () => xRef.current,
           () => yRef.current,
-          () => zoomRef.current
+          () => zoomRef.current,
+          triggerKey,
+          ID
         );
         console.log(init);
         cleanup = init.cleanup;
@@ -91,8 +94,8 @@ const InfiniteCanvas = <P extends Props>(
     return (
       <div className="infinite-container">
         <div className="infinite-canvas" id={ID}>
-          <div id={"chat-box-display-div"}>
-            <input type="text" id="cursor-chat-box" />
+          <div id="cursor-chat-box">
+            <input type="text" id="cursor-chat-box-input" />
           </div>
           {/* <div className="inf-div" id="cursor-chat-layer">
             <div id="cursor-chat-box"></div>
