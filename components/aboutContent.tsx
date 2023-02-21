@@ -26,7 +26,7 @@ const AboutContent = (props: infProps) => {
     {name: 'cmd k', link: 'https://cmdk.paco.me/'},
   ]
 
-  const adoptedBy = ['boboland.xyz', 'igloo.place', 'lilthyu.com']
+  const adoptedBy = ['boboland.xyz', 'igloo.place', 'lilithyu.com']
 
   return (
     <>
