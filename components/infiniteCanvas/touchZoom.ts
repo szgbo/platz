@@ -61,12 +61,12 @@
   let MIN_ZOOM = 0.1;
   let MAX_ZOOM = 10;
 
-  let MIN_X = -100;
-  let MAX_X = 100;
-  let MIN_Y = -1000;
-  let MAX_Y = 500;
+  // let this.#config.xMinMax[0] = -100;
+  // let this.#config.xMinMax[1] = 100;
+  // let this.#config.yMinMax[0] = -1000;
+  // let this.#config.yMinMax[1] = 500;
   
-  let IS_FINITE = false;
+  // let IS_FINITE = false;
 
   export class TouchZoom {
     #node: HTMLElement | null;
@@ -100,16 +100,10 @@
       // console.log(util.inspect(node, false, 1, true /* enable colors */))
       this.#node = node;
       this.#config = config;
-      if (config) {
-        MIN_ZOOM = config.minZoom || MIN_ZOOM;
-        MAX_ZOOM = config.maxZoom || MAX_ZOOM;
-        MIN_X = config.minX || MIN_X;
-        MAX_X = config.maxX || MAX_X;
-        MIN_Y = config.minY || MIN_Y;
-        MAX_Y = config.maxY || MAX_Y;
-        // IS_FINITE is true if any of the config bounds are defined
-        IS_FINITE = !!( config.minX || config.maxX || config.minY || config.maxY );
-      }
+      if (config?.zoomMinMax){
+        MIN_ZOOM = config.zoomMinMax[0];
+        MAX_ZOOM = config.zoomMinMax[1];
+      } 
       this.#scrollingAnchor = getNearestScrollableContainer(node);
       // @ts-ignore
       document.addEventListener("gesturestart", this.#preventGesture);
@@ -205,12 +199,6 @@
         this.#moved(false);
         await new Promise((resolve) => requestAnimationFrame(resolve));
       }
-      if (IS_FINITE) {
-        this.center = [
-          Vec.clamp(pos[0], MIN_X, MAX_X),
-          Vec.clamp(pos[1], MIN_Y, MAX_Y),
-        ];
-      }
       this.center = pos;
       this.zoom = zoom;
       this.#moved(false);
@@ -249,12 +237,9 @@
         const movement = Vec.mul(offset, 1 / this.zoom - 1 / newZoom);
 
         let newCenter = Vec.add(this.center, movement);
-        if (IS_FINITE) {
-          newCenter = [
-            Vec.clamp(newCenter[0], MIN_X, MAX_X),
-            Vec.clamp(newCenter[1], MIN_Y, MAX_Y),
-          ];
-        }
+        // clamp to min/max if defined in config
+        newCenter[0] = this.#config?.xMinMax ? Vec.clamp(newCenter[0], ...this.#config.xMinMax) : newCenter[0];
+        newCenter[1] = this.#config?.yMinMax ? Vec.clamp(newCenter[1], ...this.#config.yMinMax) : newCenter[1];
         this.center = newCenter;
 
         // this.center = Vec.add(this.center, movement);
@@ -268,21 +253,18 @@
       const delta = Vec.mul(
         e.shiftKey && !isDarwin()
           ? // shift+scroll = pan horizontally
-          [y, 0]
+            this.#config?.scrollDirection === "horizontal" ? [x, y] : [y, 0]
           : // scroll = pan vertically (or in any direction on a trackpad)
-          [x, y],
+            this.#config?.scrollDirection === "horizontal" ? [y, 0] : [x, y],
         0.5
       );
   
       if (Vec.isEqual(delta, [0, 0])) return;
 
       let newCenter = Vec.add(this.center, Vec.div(delta, this.zoom));
-      if (IS_FINITE) {
-        newCenter = [
-          Vec.clamp(newCenter[0], MIN_X, MAX_X),
-          Vec.clamp(newCenter[1], MIN_Y, MAX_Y),
-        ];
-      }
+      // clamp to min/max if defined in config
+      newCenter[0] = this.#config?.xMinMax ? Vec.clamp(newCenter[0], ...this.#config.xMinMax) : newCenter[0];
+      newCenter[1] = this.#config?.yMinMax ? Vec.clamp(newCenter[1], ...this.#config.yMinMax) : newCenter[1];
       this.center = newCenter;
       // this.center = Vec.add(this.center, Vec.div(delta, this.zoom));
       this.#moved();
@@ -318,12 +300,10 @@
       this.#lastMovement = movement[0];
       
       let newCenter = Vec.add(this.center, Vec.div(trueDelta, this.zoom * 2));
-      if (IS_FINITE) {
-        newCenter = [
-          Vec.clamp(newCenter[0], MIN_X, MAX_X),
-          Vec.clamp(newCenter[1], MIN_Y, MAX_Y),
-        ];
-      }
+      // clamp to min/max if defined in config
+      newCenter[0] = this.#config?.xMinMax ? Vec.clamp(newCenter[0], ...this.#config.xMinMax) : newCenter[0];
+      newCenter[1] = this.#config?.yMinMax ? Vec.clamp(newCenter[1], ...this.#config.yMinMax) : newCenter[1];
+
       this.center = newCenter;
       // this.center = Vec.add(this.center, Vec.div(trueDelta, this.zoom * 2));
       this.zoom = Vec.clamp(this.zoom * zoomLevel, MIN_ZOOM, MAX_ZOOM);
@@ -349,12 +329,9 @@
       if (delta[0] === 0 && delta[1] === 0 && elapsedTime < 200) return;
 
       let newCenter = Vec.sub(this.center, Vec.div(delta, this.zoom));
-      if (IS_FINITE) {
-        newCenter = [
-          Vec.clamp(newCenter[0], MIN_X, MAX_X),
-          Vec.clamp(newCenter[1], MIN_Y, MAX_Y),
-        ];
-      }
+      // clamp to min/max if defined in config
+      newCenter[0] = this.#config?.xMinMax ? Vec.clamp(newCenter[0], ...this.#config.xMinMax) : newCenter[0];
+      newCenter[1] = this.#config?.yMinMax ? Vec.clamp(newCenter[1], ...this.#config.yMinMax) : newCenter[1];
       this.center = newCenter;
 
       // this.center = Vec.sub(this.center, Vec.div(delta, this.zoom));

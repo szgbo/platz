@@ -2,11 +2,11 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 
 import { TouchZoom } from "./touchZoom";
-import { type infProps } from './infiniteDiv'
-
+import { type infProps, touchZoomConfig } from './infiniteDiv'
 
 // higher order component that takes a component as an argument
 // HOC is used to pass in props to the wrapped component in a type-safe way
+// infinite canvas has props with type infProps
 const InfiniteCanvas = <P extends infProps>(WrappedComponent: React.ComponentType<P>) => {
   const InfiniteCanvasComponent = (props: P) => {
 
@@ -20,7 +20,7 @@ const InfiniteCanvas = <P extends infProps>(WrappedComponent: React.ComponentTyp
     // can change bounds in touchZoom.ts L59-L68
     useEffect(() => {
       const frame = document.getElementById(ID) as HTMLDivElement;
-      const newTZ = new TouchZoom(frame);
+      const newTZ = new TouchZoom(frame, props.config);
       newTZ.onMove((manual) => {
         setX(newTZ.center[0])
         setY(newTZ.center[1])
