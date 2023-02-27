@@ -1,0 +1,11 @@
+.title {
+  font-weight: 200;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.sampleDock {
+  width: 100vh;
+  height: max-content;
+}

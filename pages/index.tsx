@@ -1,10 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
+import InfiniteCanvas from "../components/infiniteCanvas/infiniteCanvas";
+import HomePage from "../components/homeContent";
 
-import InfiniteCanvas from "../components/infiniteCanvas";
-import Fruits from "../components/fruits";
-import HomePage from "../components/homePage";
+// TODO: add vertical mac doc?
+// TODO: styled components?
 
-// import Dock from '../components/dock';
+// TODO: add min max bound as prop to pass in at page level
+// TODO: add 3 layers abstraction, can just pass in component list into big container?
+// TODO: abstract out components --> more like library the better it is?
+// TODO: grid background + ability to zoom background
+
+export const title = "Return to Home";
 
 export default function Home() {
   // infinite canvas is a higher order component that takes a component as an argument
