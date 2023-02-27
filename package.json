@@ -17,7 +17,7 @@
     "@use-gesture/vanilla": "^10.2.23",
     "classnames": "^2.3.2",
     "cmdk": "^0.1.21",
-    "cursor-chat": "^0.4.9",
+    "cursor-chat": "./cursor-chat",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "framer-motion": "^9.0.0",
