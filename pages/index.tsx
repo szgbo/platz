@@ -8,7 +8,10 @@ import HomePage from "../components/homePage";
 
 export default function Home() {
   // infinite canvas is a higher order component that takes a component as an argument
-  const InfiniteContent = InfiniteCanvas(HomePage);
+  const InfiniteContent = InfiniteCanvas(
+    "platzHomePageCursorChatRoom",
+    HomePage
+  );
   // position and zoom values are arbitrary and serve as placeholders
   return (
     <div>

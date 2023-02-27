@@ -17,11 +17,6 @@ const positions = {
 const HomePage = ({ x, y, zoom }: Props) => {
   return (
     <>
-      {/* <div className='inf-div' style={{ 
-        transform: getTransform(positions.center, [x, y], zoom) 
-      }}>
-        center
-      </div> */}
       <div
         className="inf-div"
         style={{

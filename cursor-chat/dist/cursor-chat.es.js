@@ -9044,7 +9044,8 @@ class Room {
 }
 const openRoom = (doc2, provider, name, key) => {
   if (rooms.has(name)) {
-    throw create$2(`A Yjs Doc connected to room "${name}" already exists!`);
+    // Instead of throwing an error, establish a new room (because old rooms are not destroyed immediately after switching pages)
+    // throw create$2(`A Yjs Doc connected to room "${name}" already exists!`);
   }
   const room = new Room(doc2, provider, name, key);
   rooms.set(name, room);
@@ -9166,6 +9167,7 @@ class WebrtcProvider extends Observable {
     }
   }
   disconnect() {
+    console.log("destroyed");
     this.shouldConnect = false;
     this.signalingConns.forEach((conn) => {
       conn.providers.delete(this);
@@ -9179,6 +9181,7 @@ class WebrtcProvider extends Observable {
     }
   }
   destroy() {
+    console.log("destroyed")
     this.doc.off("destroy", this.destroy);
     this.key.then(() => {
       this.room.destroy();
@@ -9905,6 +9908,7 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
   const others = doc2.getMap("state");
   let sendUpdate = true;
   const cleanup = () => {
+    console.log("clean up!")
     others.delete(me.id);
     provider.disconnect();
   };
@@ -9918,22 +9922,11 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
       sendUpdate = false;
     }
   }, 80);
-  // setInterval(() => {
-  //   for (const cursor of cursor_map.values()) {
-  //     cursor.elem.style.setProperty("transform", getTransform([cursor.x, cursor.y], [getX(), getY()], getZoom()))
-  //   }
-  // }, 20);
+
   document.onmousemove = (evt) => {
     if (me.x !== evt.pageX && me.y !== evt.pageY) {
       sendUpdate = true;
-      // console.log(evt.pageX, getX(), evt.pageY, getY());
-      // me.x = evt.pageX;
-      // me.y = evt.pageY;
-      // Send the coordinate relative to the infinite canvas
-      // me.x = getCanvasCenterX() + evt.pageX;
-      // me.y = getCanvasCenterY() + evt.pageY;
-      // console.log(evt);
-      // console.log(window.innerWidth)
+
       const zoom = getCanvasZoom()
       const canvasCenterX = window.innerWidth / 2;
       const canvasCenterY = window.innerHeight / 2;
@@ -9941,34 +9934,22 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
         (1 / zoom) * (evt.pageX - canvasCenterX) + getCanvasCenterX();
       const mouseYRelativeToInfiniteCanvas =
         (1 / zoom) * (evt.pageY - canvasCenterY) + getCanvasCenterY();
-      
-      // console.log(getCanvasCenterX(), getCanvasCenterY())
-      // console.log("event:", evt.pageX, evt.pageY);
-      // console.log("zoom:", zoom);
-      // console.log("canvas:", canvasCenterX, canvasCenterY);
-      console.log(
-        "cursor:",
-        (evt.pageX - canvasCenterX).toFixed(0),
-        (evt.pageY - canvasCenterY).toFixed(0)
-      );
 
-      console.log("canvasCenter:", getCanvasCenterX(), getCanvasCenterY());
-      console.log(
-        mouseXRelativeToInfiniteCanvas,
-        mouseYRelativeToInfiniteCanvas
-      );
+      // console.log(
+      //   "cursor:",
+      //   (evt.pageX - canvasCenterX).toFixed(0),
+      //   (evt.pageY - canvasCenterY).toFixed(0)
+      // );
+
+      // console.log("canvasCenter:", getCanvasCenterX(), getCanvasCenterY());
+      // console.log(
+      //   mouseXRelativeToInfiniteCanvas,
+      //   mouseYRelativeToInfiniteCanvas
+      // );
 
       me.x = mouseXRelativeToInfiniteCanvas;
       me.y = mouseYRelativeToInfiniteCanvas;
 
-      // chatDiv.style.setProperty(
-      //   "transform",
-      //   `translate(${zoom * (me.x - getCanvasCenterX())}px, ${
-      //     zoom * (me.y - getCanvasCenterY())
-      //   }px)`
-      // );
-
-      // const chatBoxDisplayDiv = document.getElementById("chat-box-display-div");
       chatBoxDiv.style.setProperty(
         "transform",
         `translate(${zoom * (me.x - getCanvasCenterX())}px, ${
@@ -10004,21 +9985,12 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
   const handleInfiniteCanvasMove = (canvasCenterX, canvasCenterY, zoom) => {
     // Update all other cursors using spline
     cursor_map.forEach((value, key) => {
-      // const updatedX = value.x - canvasCenterX;
-      // const updatedY = value.y - canvasCenterY;
-      // console.log("Mouse:", value.x, value.y)
-      // console.log("Center:", canvasCenterX, canvasCenterY)
-      // console.log("Zoom:", zoom)
-      // const displayX = zoom * (value.x - canvasCenterX);
-      // const displayY = zoom * (value.y - canvasCenterY);
       value.perfect_cursor.addPoint([value.x, value.y]);
     })
-    // console.log("handleMove")
   }
   others.observe((evt) => {
     const updated_cursors = evt.changes.keys;
-    let displayX;
-    let displayY;
+    
     updated_cursors.forEach((change, cursor_id) => {
       if (cursor_id !== me.id) {
         switch (change.action) {
@@ -10027,30 +9999,14 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
             const new_cursor_div = cursorFactory(new_cursor);
             new_cursor_div.classList.add("new");
 
-            // const cursor_wrapper = document.createElement("div");
-            // cursor_wrapper.appendChild(new_cursor_div);
-
             cursorDiv.appendChild(new_cursor_div);
             // Perform scaling and translation when adding point to animation spline
             const add_point_closure = ([x, y]) =>
               new_cursor_div.style.setProperty(
                 "transform",
                 `translate(${getCanvasZoom() * (x - getCanvasCenterX())}px, ${getCanvasZoom() * (y - getCanvasCenterY())}px`
-                // getTransform(
-                //   [x, y],
-                //   [getCanvasCenterX(), getCanvasCenterY()],
-                //   getCanvasZoom()
-                // )
               );
             const perfect_cursor = new PerfectCursor(add_point_closure);
-            // displayX =
-            //   (getCanvasZoom() * new_cursor.x - getCanvasCenterX());
-            // displayY =
-            //   (getCanvasZoom() * new_cursor.y - getCanvasCenterY());
-            // perfect_cursor.addPoint([
-            //   new_cursor.x - getCanvasCenterX(),
-            //   new_cursor.y - getCanvasCenterY(),
-            // ]);
             perfect_cursor.addPoint([new_cursor.x, new_cursor.y]);
             cursor_interp.set(cursor_id, perfect_cursor);
 
@@ -10074,18 +10030,14 @@ const initCursorChat = (room_id, getCanvasCenterX, getCanvasCenterY, getCanvasZo
             updated_chat_div.innerText = updated_cursor.chat;
             updated_cursor_div.classList.remove("new");
 
-            console.log("Update:", updated_cursor.x, updated_cursor.y)
+            // console.log("Update:", updated_cursor.x, updated_cursor.y)
 
             cursor_interp.get(cursor_id).addPoint([updated_cursor.x, updated_cursor.y]);
 
             let cursor = cursor_map.get(cursor_id)
             cursor.x = updated_cursor.x
             cursor.y = updated_cursor.y
-            // displayX = (getCanvasZoom() * updated_cursor.x - getCanvasCenterX());
-            // displayY = (getCanvasZoom() * updated_cursor.y - getCanvasCenterY());
-            // Update the cursor using spline
-            // cursor.perfect_cursor.addPoint([updated_cursor.x - getCanvasCenterX(), updated_cursor.y - getCanvasCenterY()])
-            // cursor.perfect_cursor.addPoint([displayX, displayY])
+
             console.log("update");
             break;
           case "delete":

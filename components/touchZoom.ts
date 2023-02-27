@@ -139,7 +139,6 @@
     }
   
     #updateBounds = () => {
-      console.log("update bounds")
       if (!this.#node) {
         return;
       }
@@ -152,7 +151,6 @@
         width: rect.width,
         height: rect.height,
       };
-      // console.log(this.#bounds)
     };
   
     #updateBoundsD = debounce(this.#updateBounds, 100);
@@ -197,7 +195,6 @@
     }
   
     #handleWheel: Handler<"wheel", WheelEvent> = ({ event: e }) => {
-      console.log("wheel")
       e.preventDefault();
       if (this.isPinching || e.timeStamp <= this.#wheelLastTimeStamp) return;
   
@@ -261,7 +258,6 @@
       "pinch",
       WheelEvent | PointerEvent | TouchEvent | WebKitGestureEvent
     > = ({ origin, movement, event }) => {
-      console.log("pinch")
       if (event instanceof WheelEvent) return;
       
   
@@ -293,7 +289,6 @@
       "drag",
       TouchEvent | MouseEvent | PointerEvent | KeyboardEvent
     > = ({ delta, elapsedTime }) => {
-      console.log("DRAGGIN")
       if (delta[0] === 0 && delta[1] === 0 && elapsedTime < 200) return;
       this.center = Vec.sub(this.center, Vec.div(delta, this.zoom));
       this.#moved();

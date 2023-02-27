@@ -12,6 +12,7 @@ interface Props {
 }
 
 const InfiniteCanvas = <P extends Props>(
+  roomName: string,
   WrappedComponent: React.ComponentType<P>
 ) => {
   const InfiniteCanvasComponent = (props: P) => {
@@ -40,7 +41,7 @@ const InfiniteCanvas = <P extends Props>(
       ) => void;
       try {
         const init = initCursorChat(
-          "platz_cursor_chat_room_infinite_canvas",
+          roomName,
           () => xRef.current,
           () => yRef.current,
           () => zoomRef.current,
@@ -73,22 +74,6 @@ const InfiniteCanvas = <P extends Props>(
       return cleanup;
     }, []);
 
-    // useEffect(() => {
-    //   try {
-    //     const { cleanup, handleInfiniteCanvasMove } = initCursorChat(
-    //       "platz_cursor_chat_room_index",
-    //       () => xRef.current,
-    //       () => yRef.current,
-    //       () => zoomRef.current
-    //     );
-    //     console.log(handleInfiniteCanvasMove);
-    //     setHandleInfiniteCanvasMove(handleInfiniteCanvasMove);
-    //     return cleanup;
-    //   } catch (e) {
-    //     console.log(e);
-    //   }
-    // }, []);
-
     const navBarPosition = [0, -400];
 
     return (
@@ -97,9 +82,6 @@ const InfiniteCanvas = <P extends Props>(
           <div id="cursor-chat-box">
             <input type="text" id="cursor-chat-box-input" />
           </div>
-          {/* <div className="inf-div" id="cursor-chat-layer">
-            <div id="cursor-chat-box"></div>
-          </div> */}
           <div
             className="inf-click-div"
             style={{
