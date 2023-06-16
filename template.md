@@ -8,11 +8,18 @@ export default function Page() {
   // infinite canvas is a higher order component that takes a component as an argument
   const InfiniteContent = InfiniteCanvas(PageContent)
   // position and zoom values are arbitrary and serve as placeholders
+  const tzConfig: touchZoomConfig = {
+    // yMinMax: [-500, 500],
+    // xMinMax: [-200, 200],
+    // zoomMinMax: [0.1, 50],
+    scrollDirection: 'vertical',
+  }
+
   return (
     <div>
-      <InfiniteContent x={0} y={0} zoom={1}/>
+      <InfiniteContent x={0} y={0} zoom={1} config={tzConfig}/>
     </div>
-  ) 
+  )
 }
 ```
 ### pageContent.tsx
@@ -27,7 +34,7 @@ const pos : posDict = {
   subtitle: [offsetx, 50],
 }
 
-export default function PageContent = (props: infProps) => {
+export default function PageContent (props: infProps) {
 
   return (
     <>
@@ -49,3 +56,20 @@ export default function PageContent = (props: infProps) => {
 }
 ```
 
+## Component Tricks
+### Videos
+```tsx
+<video autoPlay loop muted playsInline
+  src={'/video.mp4'}
+  width={281} height={500}
+  style={{
+    height: "auto",
+    width: "500px",
+    objectFit: "contain",
+  }}/>
+```
+### Links
+```tsx
+<a href={person} target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", fontWeight: "300"}}>{person}</a>
+```
+###

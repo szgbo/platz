@@ -7,7 +7,9 @@ import { touchZoomConfig } from '../components/infiniteCanvas/infiniteDiv'
 
 // TODO: add 3 layers abstraction, can just pass in component list into big container?
 // TODO: abstract out components --> more like library the better it is?
-// TODO: grid background + ability to zoom background
+// TODO: on zoom, can pan actual limit on two sides
+// TODO: make css not lag please 
+// TODO: make documentation
 
 export const title = "Return to Home";
 
@@ -17,8 +19,8 @@ export default function Home() {
   // position and zoom values are arbitrary and serve as placeholders
 
   const tzConfig: touchZoomConfig = {
-    // yMinMax: [-500, 500],
-    // xMinMax: [-200, 200],
+    yMinMax: [0, 500],
+    xMinMax: [-10, 10],
     // zoomMinMax: [0.1, 50],
 
     // scrollDirection: 'horizontal',
